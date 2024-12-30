@@ -1,0 +1,59 @@
+/* ===VARIABLES=== */
+
+:root {
+
+   /* NEUTRALS */
+	--neutral-0: 		#FFFFFF;
+	--neutral-20:		#FAFAFA;
+	--neutral-30:		#F7F7F7;
+	--neutral-50:		#F2F2F2;
+	--neutral-100:		#E5E5E5;
+	--neutral-200: 	#CCCCCC;
+	--neutral-300: 	#B2B2B2;
+	--neutral-400: 	#999999;
+	--neutral-500:		#808080;
+	--neutral-600:		#666666;
+	--neutral-700:		#4D4D4D;
+	--neutral-800:		#333333;
+	--neutral-900:		#1A1A1A;
+	--neutral-1000:	#000000;
+
+   /* FONT */
+
+   --heading: 'Jost', sans-serif;
+   --body-copy: 'Spectral', serif;
+   --mono: "Roboto Mono", monospace;
+
+   --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+   --lineHeightFixedAmount: .4rem;
+   --lineHeightRelativeAmount: 1.2em;
+   --sizesIncrement: 1.3;
+
+   --fontSize-3: calc(var(--fontSize-2) * var(--sizesIncrement)); 
+   --fontSize-2: calc(var(--fontSize-1) * var(--sizesIncrement)); 
+   --fontSize-1: calc(var(--fontSize-0) * var(--sizesIncrement)); 
+   --fontSize-0: 1.125rem; 
+   --fontSize-neg1: calc(var(--fontSize-0) / var(--sizesIncrement));
+
+   --globalLineHeight: calc(var(--lineHeightFixedAmount) + var(--lineHeightRelativeAmount));
+   --globalFontSize: var(--fontSize-0);
+
+   /* SPACING */
+
+   --max-width: 686px;
+	--page-padding: 12px;
+
+   /* COLORS IN USE */
+
+	--ink: var(--netural-1000);
+	--code-bg: var(--neutral-0);
+	--footnote-ref-bg: var(--neutral-0);
+	--footnote-ref-nested-bg: var(--neutral-50);
+	--footnote-bg: var(--neutral-0);
+
+	--article-card-bg: var(--neutral-0);
+
+	--medium-space: 1.5rem;
+	--big-space: 2.5rem;
+}

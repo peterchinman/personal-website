@@ -1,5 +1,6 @@
 {
     "require": {
-        "league/commonmark": "^2.6"
+        "league/commonmark": "^2.6",
+        "symfony/yaml": "^7.2"
     }
 }

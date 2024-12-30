@@ -27,7 +27,7 @@ a {
 /* picture is inline by default, but we need it to accept block-level images in it */
 picture {
 	display: block;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 /* globally set images to fill their parent and keep their ratio as the default */

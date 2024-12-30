@@ -1,5 +1,16 @@
-<div class="blog-title">Strictly</div>
-<p class="blog-subtitle">Compose poems with strict rhyme & meter</p>
+---
+title: Strictly
+slug: strictly
+date: 2024-12-30
+subtitle: A rhyme & meter checker built for poets
+site: https://peterchinman.github.io/strictly/
+code: https://github.com/peterchinman/strictly
+tags:
+  - project
+  - featured
+  - language
+coolness: 10
+---
 
 I wanted to make a tool that would help someone compose poems in strict forms, but in a way that trusted the author when they wanted to deviate from the form. Guiding but not ruling. To do that I needed to work in a lot of fuzziness.
 # Rhyme
@@ -46,7 +57,7 @@ The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagon
 
 [^3]: The idea appeared to me in a dream.
 
-<pre><code class="small-code code">
+<pre><code class="small-code">
      ..         .          .         ..           
   .::  .=.   .=.  ::.  .::  .=.   .=.  ::.        
 .:.       .=.       .::.       .=.       .:       
@@ -68,7 +79,8 @@ The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagon
 
 ### The Diphthong Problem
 
-![[CleanShot 2024-12-14 at 23.02.23@2x.png]]
+
+![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](/static/the-dipthong-problem.png)
 
 Some vowels are not just points in vowel space. What we call "diphthongs" are a movement between two points in vowel space. For example, the vowel in "boy"—if you slow down your pronunciation you can hear the sound moving from a vowel near "oh" to a vowel near "ee".
 

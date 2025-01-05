@@ -25,6 +25,15 @@ function buildSorter($key){
 }
 
 function displayArticleList($articles, $tags, $listBy = "date"){
+   $articles = array_filter($articles, function ($article) use ($tags) {
+      $boolFlag = true;
+      foreach ($tags as $tag) {
+          if (! in_array($tag, $article['tags'])) {
+              $boolFlag = false;
+          }
+      }
+      return $boolFlag;
+   });
    usort($articles, buildSorter($listBy));
    include __DIR__ . "/views/article-list.php";
 }

@@ -4,10 +4,10 @@
          <?= $article["title"] ?>
       </a>
    </div>
-   <?php if(file_exists(__DIR__ . "/../articles/" . $article["slug"] . ".png")): ?>
+   <?php if(file_exists(__DIR__ . "/../../public/assets/articles/" . $article["slug"] . ".png")): ?>
    <picture>
       <a href="/blog/<?= $article["slug"] ?>">
-         <img src="<?= BASE_URL . "articles/" . $article["slug"] ?>.png" alt="A screenshot of the interface of <?= $article["title"] ?>">
+         <img src="<?= BASE_URL . "assets/articles/" . $article["slug"] ?>.png" alt="A screenshot of the interface of <?= $article["title"] ?>">
       </a>
    </picture>
    <?php endif; ?>

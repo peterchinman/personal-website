@@ -6,7 +6,7 @@
 	<title>Peter Chinman</title>
 
 	<meta name="description" content="Peter is a _______">
-	<meta property="og:image" content="images/share-card.jpg">
+	<meta property="og:image" content="/assets/images/share-card.jpg">
 
    <!-- GOOGLE fonts -->
 
@@ -16,7 +16,7 @@
 
    <!-- end GOOGLE fonts -->
 
-	<link href="<?= BASE_URL ?>css/style.css" rel="stylesheet">
+	<link href="<?= BASE_URL ?>assets/css/style.css" rel="stylesheet">
 
    
 </head>

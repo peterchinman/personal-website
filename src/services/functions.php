@@ -35,16 +35,16 @@ function displayArticleList($articles, $tags, $listBy = "date"){
       return $boolFlag;
    });
    usort($articles, buildSorter($listBy));
-   include __DIR__ . "/views/article-list.php";
+   include __DIR__ . "/../views/article-list.php";
 }
-function getMarkdownFiles($folder = 'articles/'){
+function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){
    // Ensure the folder exists
    if (!is_dir($folder)) {
       return [];
   }
 
   // Scan the folder for files
-  $files = scandir(__DIR__ . "/" . $folder);
+  $files = scandir($folder);
 
   // Filter only .md files
   $markdownFiles = array_filter($files, function ($file) use ($folder) {
@@ -57,7 +57,6 @@ function getMarkdownFiles($folder = 'articles/'){
 // TODO: instead of running this live each time we need to serve, we should generate an array of front-matter as part of a deployment action. But for now, it's snappy and still works.
 function getMarkdownFrontMatter(){
 
-
    $markdownFiles = getMarkdownFiles();
 
    // For `symfony/yaml`
@@ -66,7 +65,7 @@ function getMarkdownFrontMatter(){
    $articles = [];
 
    foreach ($markdownFiles as $file) {
-      $path = __DIR__ .'/articles/'. $file;
+      $path = __DIR__ .'/../../public/assets/articles/'. $file;
       $content = file_get_contents($path);
       $frontMatter = $frontMatterParser->parse($content)->getFrontMatter();
       $articles[] = $frontMatter;
@@ -78,7 +77,7 @@ function getMarkdownFrontMatter(){
 // Converts the markdown in articles/$slug.md to HTML, and adds it the article-template
 function showArticle($slug, $config, $environment) {
 
-   $projectFile = __DIR__ . '/articles/' . $slug . '.md';
+   $projectFile = __DIR__ . '/../../public/assets/articles/' . $slug . '.md';
 
     // Check if the requested project page exists
    if (file_exists($projectFile)) {
@@ -96,9 +95,9 @@ function showArticle($slug, $config, $environment) {
 
 
       // article-template.php wraps $htmlContent in an <article>, and runs javascript afterwards
-      include 'views/article-template.php';
+      include __DIR__ . '/../views/article-template.php';
    } else {
       // If the project file doesn't exist, show a 404 page
-      include '404.php';
+      include __DIR__ . '/../views/404.php';
    }
 }

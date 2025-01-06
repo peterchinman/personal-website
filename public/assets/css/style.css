@@ -69,7 +69,7 @@ article-card {
 		padding-bottom: 2rem;
 		width: fit-content;
 
-		a {
+		/* a {
 			text-decoration: underline;
 			text-decoration-color: transparent;
 			text-underline-offset: 4px;
@@ -80,7 +80,7 @@ article-card {
 		a:active {
 			text-decoration-color: var(--ink);
 			text-underline-offset: 2px;
-		}
+		} */
 
 		
 	}

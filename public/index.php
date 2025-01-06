@@ -21,15 +21,15 @@ switch (true) {
       break;
 
    // Blog Page
-   case (preg_match('/^\/blog(\/.*)?$/', $request_uri)):
-      if ($request_uri === '/blog') {
-         include __DIR__ . '/../src/views/blog.php';  // Show the projects list
-      } else {
-         // Handle individual project pages
-         $slug = trim(str_replace('/blog/', '', $request_uri), '/');
-         showArticle($slug, $config, $environment);
-      }
-      break;
+      case (preg_match('/^\/blog(\/.*)?$/', $request_uri)):
+         if ($request_uri === '/blog') {
+            include __DIR__ . '/../src/views/blog.php';  // Show the projects list
+         } else {
+            // Handle individual project pages
+            $slug = trim(str_replace('/blog/', '', $request_uri), '/');
+            showArticle($slug, $config, $environment);
+         }
+         break;
 
    // Projects Page
    case (preg_match('/^\/projects(\/.*)?$/', $request_uri)):

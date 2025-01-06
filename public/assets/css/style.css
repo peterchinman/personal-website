@@ -11,6 +11,7 @@
 body {
 	font-family: var(--heading);;
 	background-color: var(--neutral-30);
+	border: 2px solid red;
 }
 
 inner-column{

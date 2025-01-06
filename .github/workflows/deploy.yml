@@ -1,0 +1,69 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+      
+      - name: Add DigitalOcean to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
+      
+      - name: Deploy to DigitalOcean
+        env:
+          DROPLET_IP: ${{ secrets.DROPLET_IP }}
+          DEPLOY_PATH: /var/www/peterchinman.com
+        run: |
+
+          # First time setup - create directories if they don't exist
+          ssh root@$DROPLET_IP "
+            mkdir -p $DEPLOY_PATH
+            # Remove existing public_html if it's not a symlink
+            if [ -d $DEPLOY_PATH/public_html ] && [ ! -L $DEPLOY_PATH/public_html ]; then
+              rm -rf $DEPLOY_PATH/public_html
+            fi"
+
+          # Deploy the code
+          ssh root@$DROPLET_IP "
+            cd $DEPLOY_PATH && \
+            git config --global --add safe.directory $DEPLOY_PATH && \
+            git fetch --all && \
+            git reset --hard origin/main && \
+            
+            # Create symlink if it doesn't exist
+            if [ ! -L $DEPLOY_PATH/public_html ]; then
+              ln -sf $DEPLOY_PATH/public $DEPLOY_PATH/public_html
+            fi && \
+            
+            # Install dependencies if needed
+            if [ -f composer.json ]; then
+              composer install --no-interaction --no-dev --optimize-autoloader
+            fi && \
+            if [ -f package.json ]; then
+              npm ci && \
+              npm run build
+            fi && \
+            
+            # Set proper permissions
+            chown -R www-data:www-data $DEPLOY_PATH && \
+            chmod -R 755 $DEPLOY_PATH && \
+            
+            # Reload web server
+            systemctl reload apache2"

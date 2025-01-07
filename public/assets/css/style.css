@@ -206,9 +206,7 @@ section.bio {
 
 	/* END SIDEBAR */
 
-	
 	:root {
-		/* is this reasonable even on huge screens */
 		--max-width: 3500px;
 		--page-padding: 2rem;
 	}

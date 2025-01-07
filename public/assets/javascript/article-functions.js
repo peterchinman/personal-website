@@ -73,7 +73,7 @@ function updateFootnotePositions(footnotes){
     const matchingRef = Array.from(footnoteRefs).filter((ref) => ref.textContent == id)[0];
 
     // Note this break point is referenced in the CSS as well, so if you change it here, change it there as well.
-    const mediaQuery = window.matchMedia('(min-width: 1100px)');
+    const mediaQuery = window.matchMedia('(min-width: 1300px)');
 
     // if wide enough we want it in the margin, at the correct height
     if (mediaQuery.matches) {

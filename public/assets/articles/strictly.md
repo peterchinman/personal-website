@@ -80,7 +80,7 @@ The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagon
 ### The Diphthong Problem
 
 
-![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](/static/the-dipthong-problem.png)
+![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](/assets/images/the-dipthong-problem.png)
 
 Some vowels are not just points in vowel space. What we call "diphthongs" are a movement between two points in vowel space. For example, the vowel in "boy"—if you slow down your pronunciation you can hear the sound moving from a vowel near "oh" to a vowel near "ee".
 

@@ -238,14 +238,33 @@ article {
 	}
 
 
-   @media (min-width: 1100px){
+	@media (min-width: 900px) {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		max-width: 100vw;
+
+		inner-column {
+			grid-column: 3 / span 10;
+			max-width: 100%;
+			width: 70ch;
+			margin-inline: 0;
+			/* padding-inline: 0; */
+		}
+	}
+
+
+	/* break into table of contents and sidenotes */
+	/* Note this break point is referenced in the CSS as well, so if you change it here, change it there as well. */
+   @media (min-width: 1300px){
+		margin-inline: var(--page-padding);
+		--max-width: 688px;
       display: grid;
-      grid-template-columns: 1fr var(--max-width) 1fr;
+      grid-template-columns: repeat(12, 1fr);
 
       .table-of-contents{
-         grid-area: 1 / 1;
+         grid-row: 1;
+			grid-column: 1 / span 2;
          display: block;
-         padding-left: 1rem;
          color: var(--neutral-700);
          margin-top: 1rem;
 
@@ -256,7 +275,10 @@ article {
       }
 
       inner-column{
-         grid-column: 2;
+			margin-inline: auto;
+			grid-row: 1;
+         grid-column: 2 / span 8;
+			max-width: var(--max-width);
          position: relative;
       }
 

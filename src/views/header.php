@@ -6,11 +6,11 @@ include __DIR__ . '/head.php';
 
 <body>
    <header>
-      <section class="title">
+      <div class="title">
          <inner-column>
             <div class="page-name"><a href="<?= BASE_URL ?>">Peter Chinman</a></div>
          </inner-column>
-      </section>
+      </div>
 
       <nav>
          <inner-column>

@@ -1,0 +1,28 @@
+/* ===GENERAL TYPOGRAPHY & SPACING=== */
+
+.loud-voice {
+	font-family: var(--heading);
+	font-size: clamp(var(--fontSize-1), 5vw, var(--fontSize-3));
+}
+
+.attention-voice {
+	font-family: var(--heading);
+	font-size: var(--fontSize-1);
+	font-weight: 500;
+}
+
+.body-copy, p {
+	line-height: var(--globalLineHeight);
+	font-family: var(--body-copy);
+	font-size: var(--fontSize-0);
+}
+
+.page-name {
+	font-size: var(--fontSize-3);
+	font-weight: 500;
+}
+
+.site-nav {
+	font-size: var(--fontSize-1);
+	font-weight: 600;
+}

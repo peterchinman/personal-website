@@ -1,4 +1,4 @@
-<article-card>
+<project-card>
    <div class="title">
       <a href="/blog/<?= $article["slug"] ?>">
          <?= $article["title"] ?>
@@ -21,4 +21,4 @@
       <li><a href="<?= $article["code"] ?>">code</a></li>
    </ul>
    <?php endif; ?>
-</article-card>
+</project-card>

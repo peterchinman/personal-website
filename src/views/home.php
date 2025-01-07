@@ -4,12 +4,12 @@
          <p class="loud-voice">Poet-turned-coder building tools for manipulating&nbsp;language.</p>
       </inner-column>
    </section>
-   <section class="featured-projects">
+   <section class="projects-section">
       <inner-column>
          <h1 class="attention-voice section-title">Featured Projects</h1>
          <?php
             $tags = ["project", "featured"];
-            displayArticleList($articles, $tags, "coolness");
+            renderArticleList($articles, $tags, "coolness");
          ?>
       </inner-column>
    </section>

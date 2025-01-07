@@ -21,23 +21,23 @@ switch (true) {
       break;
 
    // Blog Page
-      case (preg_match('/^\/blog(\/.*)?$/', $request_uri)):
-         if ($request_uri === '/blog') {
-            include __DIR__ . '/../src/views/blog.php';  // Show the projects list
-         } else {
-            // Handle individual project pages
-            $slug = trim(str_replace('/blog/', '', $request_uri), '/');
-            showArticle($slug, $config, $environment);
-         }
-         break;
-
-   // Projects Page
-   case (preg_match('/^\/projects(\/.*)?$/', $request_uri)):
-      if ($request_uri === '/projects') {
-         include __DIR__ . '/../src/views/projects.php';  // Show the projects list
+   case (preg_match('/^\/blog(\/.*)?$/', $request_uri)):
+      if ($request_uri === '/blog') {
+         include __DIR__ . '/../src/views/blog.php';  // Show the projects list
       } else {
          // Handle individual project pages
-         $slug = trim(str_replace('/projects/', '', $request_uri), '/');
+         $slug = trim(str_replace('/blog/', '', $request_uri), '/');
+         showArticle($slug, $config, $environment);
+      }
+      break;
+
+   // Work Page
+   case (preg_match('/^\/work(\/.*)?$/', $request_uri)):
+      if ($request_uri === '/work') {
+         include __DIR__ . '/../src/views/work.php';  // Show the projects list
+      } else {
+         // Handle individual project pages
+         $slug = trim(str_replace('/work/', '', $request_uri), '/');
          showArticle($slug, $config, $environment);
       }
       break;

@@ -14,17 +14,23 @@ function validTags($article, $tags){
    }
    return $valid;
 }
-function buildSorter($key){
-   return function ($a, $b) use ($key) {
+function buildSorter($key, $order){
+   return function ($a, $b) use ($key, $order) {
       if ($a[$key] == $b[$key]) {
          return 0;
       }
-      return ($a[$key] > $b[$key]) ? -1 : 1;
+      if ($order === "descending") {
+         return ($a[$key] > $b[$key]) ? -1 : 1;
+      }
+      else {
+         return ($a[$key] < $b[$key]) ? -1 : 1;
+      } 
+      
   };
    
 }
 
-function displayArticleList($articles, $tags, $listBy = "date"){
+function renderArticleList($articles, $tags, $listBy = "date", $order = "descending", $style = "project"){
    $articles = array_filter($articles, function ($article) use ($tags) {
       $boolFlag = true;
       foreach ($tags as $tag) {
@@ -34,7 +40,7 @@ function displayArticleList($articles, $tags, $listBy = "date"){
       }
       return $boolFlag;
    });
-   usort($articles, buildSorter($listBy));
+   usort($articles, buildSorter($listBy, $order));
    include __DIR__ . "/../views/article-list.php";
 }
 function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){

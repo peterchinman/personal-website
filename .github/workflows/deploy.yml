@@ -45,7 +45,7 @@ jobs:
             cd $DEPLOY_PATH && \
             git config --global --add safe.directory $DEPLOY_PATH && \
             git fetch --all && \
-            git reset --hard origin/main && \
+            git reset --hard origin/master && \
             
             # Create symlink if it doesn't exist
             if [ ! -L $DEPLOY_PATH/public_html ]; then

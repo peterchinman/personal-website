@@ -53,11 +53,11 @@
 
    /* COLORS IN USE */
 
-	--ink: var(--netural-1000);
-	--code-bg: var(--neutral-0);
-	--footnote-ref-bg: var(--neutral-0);
-	--footnote-ref-nested-bg: var(--neutral-50);
-	--footnote-bg: var(--neutral-0);
+	--ink: 							var(--neutral-1000);
+	--code-bg: 						var(--neutral-0);
+	--footnote-ref-bg: 			var(--neutral-0);
+	--footnote-ref-nested-bg: 	var(--neutral-50);
+	--footnote-bg: 				var(--neutral-0);
 
 	--article-card-bg: var(--neutral-0);
 

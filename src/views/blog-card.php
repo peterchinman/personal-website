@@ -1,6 +1,6 @@
 <blog-card>
    <div class="title">
-      <a href="/blog/<?= $article["slug"] ?>">
+      <a href="/blog/<?= $article["slug"] ?>?key=<?= $source ?? '' ?>">
          <?= $article["title"] ?>
       </a>
    </div>

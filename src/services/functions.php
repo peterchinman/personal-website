@@ -5,6 +5,27 @@ use League\CommonMark\Extension\FrontMatter\Data\LibYamlFrontMatterParser;
 use League\CommonMark\Extension\FrontMatter\Data\SymfonyYamlFrontMatterParser;
 use League\CommonMark\Extension\FrontMatter\FrontMatterParser;
 
+
+function parseRequestURI($request_uri) {
+   // Use parse_url to break down the URI into components
+   $parsed_url = parse_url($request_uri);
+
+   // Get the path or default to '/'
+   $path = $parsed_url['path'] ?? '/';
+
+   // Get the query string and parse it into an associative array
+   $query_params = [];
+   if (isset($parsed_url['query'])) {
+       parse_str($parsed_url['query'], $query_params);
+   }
+
+   // Return the path and query parameters
+   return [
+       'path' => $path,
+       'query' => $query_params,
+   ];
+}
+
 function validTags($article, $tags){
    $valid = True;
    foreach($tags as $tag){
@@ -29,20 +50,20 @@ function buildSorter($key, $order){
   };
    
 }
-
-function renderArticleList($articles, $tags, $listBy = "date", $order = "descending", $style = "project"){
-   $articles = array_filter($articles, function ($article) use ($tags) {
-      $boolFlag = true;
-      foreach ($tags as $tag) {
-          if (! in_array($tag, $article['tags'])) {
-              $boolFlag = false;
-          }
-      }
-      return $boolFlag;
-   });
-   usort($articles, buildSorter($listBy, $order));
-   include __DIR__ . "/../views/article-list.php";
-}
+// this has been moved from a function into just raw PHP
+// function renderArticleList($articles, $tags, $listBy = "date", $order = "descending", $style = "project"){
+//    $articles = array_filter($articles, function ($article) use ($tags) {
+//       $boolFlag = true;
+//       foreach ($tags as $tag) {
+//           if (! in_array($tag, $article['tags'])) {
+//               $boolFlag = false;
+//           }
+//       }
+//       return $boolFlag;
+//    });
+//    usort($articles, buildSorter($listBy, $order));
+//    include __DIR__ . "/../views/article-list.php";
+// }
 function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){
    // Ensure the folder exists
    if (!is_dir($folder)) {

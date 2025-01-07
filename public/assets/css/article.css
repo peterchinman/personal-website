@@ -1,4 +1,4 @@
-article {
+article, .reading-section {
 	overflow-x: hidden;
 
    position: relative;
@@ -36,7 +36,6 @@ article {
 	p, li {
 		font-family: var(--body-copy);
 		font-size: var(--fontSize-0);
-
 		a {
 			display: inline;
 			text-decoration: underline;
@@ -89,7 +88,7 @@ article {
 		background-color: var(--code-bg);
 	}
 
-	
+	/* ===FONTS=== */
 
 	.blog-title {
 		font-size: var(--fontSize-3);
@@ -120,23 +119,27 @@ article {
 		text-transform: uppercase;
 	}
 
-	p + p {
+	/* ===SPACING=== */
+
+	p + p, .footnote-container + p {
 		padding-top: 1lh;
 	}
 
-	h1 {
+	h1:not(:first-child) {
 		padding-top: 1.5lh;
 	}
 
-	h2, h3 {
+	h2:not(:first-child), * + h3:not(:first-child) {
 		padding-top: 1.5lh;
 	}
 
-	h1 + p, h2 + p, h3 + p {
+	h1 + p {
 		padding-top: 1lh;
 	}
 
-	
+	h2 + p, h3 + p {
+		padding-top: 1lh;
+	}
 
 	ul.table-of-contents, .table-of-contents ul {
 		

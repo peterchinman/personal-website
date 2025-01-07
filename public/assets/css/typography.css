@@ -11,7 +11,7 @@
 	font-weight: 500;
 }
 
-.body-copy, p {
+.body-copy {
 	line-height: var(--globalLineHeight);
 	font-family: var(--body-copy);
 	font-size: var(--fontSize-0);
@@ -41,5 +41,9 @@ blog-card .title {
 
 blog-card .description {
 	font-size: var(--fontSize-neg1);
+	font-style: italic;
+}
+
+em {
 	font-style: italic;
 }

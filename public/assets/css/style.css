@@ -10,8 +10,11 @@
 /* ===GLOBAL=== */
 
 body {
-	font-family: var(--heading);;
+	font-family: var(--heading);
 	background-color: var(--neutral-30);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 inner-column{
@@ -44,11 +47,97 @@ header{
 
 main {
 	padding-bottom: 5rem;
+	/* flex-grow: 2; */
 }
  
 main section:first-child {
 	padding-block: var(--big-space);
 }
+
+/* ===REDIRECTION PAGE=== */
+.disambiguation {
+
+	background-color: var(--neutral-100);
+
+	header {
+		.site-nav {
+			visibility: hidden;
+		}
+	}
+
+	.fake-menu {
+		--input-padding-inline: .4em;
+		--input-padding-block: .4em;
+		--input-max-width: 500px;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: .5em;
+
+		background-color: var(--neutral-100);
+	
+		font-size: var(--fontSize-3);
+		font-weight: 500;
+
+		.fill-in-the {
+			grid-column: span 2;
+			display: grid;
+			grid-template-columns: subgrid;
+			align-items: baseline;
+			
+
+			.blank {
+				.hold-open {
+					visibility: hidden;
+				}
+				max-width: var(--input-max-width);
+				border: 2px solid #7039E2;
+				border-radius: 4px;
+				background-color: white;
+				padding-inline: var(--input-padding-inline);
+				padding-block: var(--input-padding-block);
+				position: relative;
+
+				&:after {
+					content: '';
+					width: 0; 
+					height: 0; 
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					
+					border-bottom: 10px solid black;
+					position: absolute;
+					right: var(--input-padding-inline);
+					top: calc(50% - 5px);
+					
+				}
+			}
+		}
+
+		.selection-options {
+			background-color: var(--neutral-0);
+			grid-column: 2;
+			width: 100%;
+			border-radius: 4px;
+			box-shadow: 0px 6px 10px -3px rgba(0, 0, 0, 0.4);
+			max-width: var(--input-max-width);
+		}
+	
+		li {
+			padding-block: var(--input-padding-block);
+			padding-inline: var(--input-padding-inline);
+			&:hover {
+				background-color: aliceblue;
+			}
+		}
+		li + li {
+			/* margin-top: .2em; */
+		}
+	
+	}
+
+}
+
+
 
 /* ===HOME=== */
 

@@ -1,4 +1,6 @@
 article {
+	overflow-x: hidden;
+
    position: relative;
    padding-top: var(--big-space);
 
@@ -174,6 +176,7 @@ article {
 	.footnotes, .footnote-container {
       p, li{
          font-size: var(--fontSize-neg1);
+			max-width: 688px;;
       }
       margin-block: 2lh;
 		padding-block: 2lh;
@@ -181,6 +184,7 @@ article {
 		background-color: var(--footnote-bg);
 		padding-left: max(3rem, calc((100vw - var(--max-width)) / 2));
       padding-right: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
+		
 
       .footnote {
          position: relative;
@@ -249,6 +253,13 @@ article {
 			width: 70ch;
 			margin-inline: 0;
 			/* padding-inline: 0; */
+		}
+		
+		.footnotes, .footnote-container {
+			--page-padding: 2rem;
+			margin-left: calc(-1 * (100vw / 12 * 2 + var(--page-padding)));
+			margin-right: calc(-1 * (100vw / 12 * 4 + var(--page-padding)));
+			padding-inline: calc(100vw / 12 * 2 + var(--page-padding));
 		}
 	}
 

@@ -78,8 +78,6 @@ main section:first-child {
 	
 		.title {
 			padding-inline: var(--card-padding-inline);
-			font-size: var(--fontSize-1);
-			font-weight: 500;
 			padding-bottom: 2rem;
 			width: fit-content;
 	
@@ -154,11 +152,27 @@ main section:first-child {
 	}
 }
 
-main.blog-page {
-	.blog-card {
-
+.blog-listing {
+	h1 + ul {
+		padding-top: var(--big-space);
+	}
+	.article-list {
+		li:not(:first-child) {
+			padding-top: var(--medium-space);
+		}
+	}
+	blog-card {
+		margin-inline: calc(-1 * var(--page-padding));
+		padding-inline: var(--page-padding);
+		padding-block: var(--medium-space);
+		&:nth-child(2n-1) {
+			background-color: var(--neutral-50);
+		}
+		
 	}
 }
+
+
 
 @media (min-width: 900px) {
 	

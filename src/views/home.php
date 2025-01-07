@@ -1,4 +1,4 @@
-<main class="home">
+<main class="home-page">
    <section class="bio">
       <inner-column>
          <p class="loud-voice">Poet-turned-coder building tools for manipulating&nbsp;language.</p>

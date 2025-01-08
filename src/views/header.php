@@ -47,13 +47,13 @@ include __DIR__ . '/head.php';
 
       <nav>
          <?php 
-         if (isset($source) && ($source === "code" || (($request_uri['query']['key'] ?? null) === "code"))): ?>
+         // if (isset($source) && ($source === "code" || (($request_uri['query']['key'] ?? null) === "code"))): ?>
          <ul class="site-nav">
             <li><a href="<?= BASE_URL ?>work">Work</a></li>
             <li><a href="<?= BASE_URL ?>blog?source=<?= $source ?? '' ?>">Blog</a></li>
             <li><a href="<?= BASE_URL ?>bio">Bio</a></li>
          </ul>
-         <?php endif; ?>
+         <?php //endif; ?>
       </nav>
 
       <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">

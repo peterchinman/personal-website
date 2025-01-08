@@ -276,14 +276,13 @@ article, .reading-section {
       grid-template-columns: repeat(12, 1fr);
 
       .table-of-contents{
+			/* display: block; */
          grid-row: 1;
 			grid-column: 1 / span 2;
-         display: block;
          color: var(--neutral-700);
          margin-top: 1rem;
-
          position: sticky;
-         top: 5rem;  
+         top: 5rem;
          
          align-self: start;
       }

@@ -18,42 +18,22 @@ $request_uri = parseRequestURI($request_uri);
 
 
 switch (true) {
-   // Peter is a ______
-   case ($request_uri['path'] === BASE_URL || $request_uri['path'] === '/index.php' || $request_uri['path'] === '/disambiguation'):
-      $source = "disambiguation";
-      include __DIR__ . '/../src/views/header.php';
-      include __DIR__ . '/../src/views/disambiguation.php';
-      break;
-
    // Code
-   case (preg_match('/^\/code(\/.*)?$/', $request_uri['path'])):
+   case ($request_uri['path'] === BASE_URL || $request_uri['path'] === '/index.php'):
       $source = "code";
       include __DIR__ . '/../src/views/header.php';
+      include __DIR__ . '/../src/views/code-home.php';
 
-      // Code Home
-      if ($request_uri['path'] === CODE_URL) {
-         include __DIR__ . '/../src/views/code-home.php';
-      }
-      else {
-         $path = str_replace('/code', '', $request_uri['path']);
-         // Code Work Page
-         if (preg_match('/^\/work(\/.*)?$/', $path)) {
-            if ($path === "/work" || $path === "/work/") {
-               include __DIR__ . '/../src/views/work.php';
-            }
-         }
-         // Code Bio Page
-         else if ($path === '/bio') {
-            include __DIR__ . '/../src/views/bio.php';
-            break;
-         }
-
-      }
-      
+   case (preg_match('/^\/work(\/.*)?$/', $request_uri['path'])):
+      include __DIR__ . '/../src/views/work.php';
       break;
-
+   
+   case ($request_uri['path'] === '/bio'):
+      include __DIR__ . '/../src/views/bio.php';
+      break;
+      
    // Blog Page
-   // Blog is cross-site, but gets passed a ?key=x query parameter, which tells: 1) the header which site nav to use, and 2) tells the blog what content to display.
+   // Blog is cross-site, but gets passed a ?source=x query parameter, which tells: 1) the header which site nav to use, and 2) tells the blog what content to display.
    // TODO have this tag listed on the blog page, with a link to click "show all"
    case (preg_match('/^\/blog(\/.*)?$/', $request_uri['path'])):
       $source = $request_uri['query']['source'] ?? "blog";

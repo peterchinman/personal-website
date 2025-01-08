@@ -46,11 +46,12 @@ include __DIR__ . '/head.php';
       </script>
 
       <nav>
-         <?php if ($source === "code" || (($request_uri['query']['key'] ?? null) === "code")): ?>
+         <?php 
+         if (isset($source) && ($source === "code" || (($request_uri['query']['key'] ?? null) === "code"))): ?>
          <ul class="site-nav">
-            <li><a href="<?= BASE_URL ?>code/work">Work</a></li>
+            <li><a href="<?= BASE_URL ?>work">Work</a></li>
             <li><a href="<?= BASE_URL ?>blog?source=<?= $source ?? '' ?>">Blog</a></li>
-            <li><a href="<?= BASE_URL ?>code/bio">Bio</a></li>
+            <li><a href="<?= BASE_URL ?>bio">Bio</a></li>
          </ul>
          <?php endif; ?>
       </nav>

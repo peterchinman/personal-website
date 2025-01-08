@@ -19,16 +19,18 @@ $request_uri = parseRequestURI($request_uri);
 
 switch (true) {
    // Code
-   case ($request_uri['path'] === BASE_URL || $request_uri['path'] === '/index.php'):
+   case ($request_uri['path'] === BASE_URL || $request_uri['path'] === '/index.php' || $request_uri['path'] === CODE_URL):
       $source = "code";
       include __DIR__ . '/../src/views/header.php';
       include __DIR__ . '/../src/views/code-home.php';
 
    case (preg_match('/^\/work(\/.*)?$/', $request_uri['path'])):
+      include __DIR__ . '/../src/views/header.php';
       include __DIR__ . '/../src/views/work.php';
       break;
    
    case ($request_uri['path'] === '/bio'):
+      include __DIR__ . '/../src/views/header.php';
       include __DIR__ . '/../src/views/bio.php';
       break;
       

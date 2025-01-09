@@ -31,13 +31,18 @@ jobs:
         run: |
           ssh root@$DROPLET_IP "\
             mkdir -p $DEPLOY_PATH/public_html"
-
-          # Sync files excluding git and hapax-finder
+      
+          # First sync all files except public directory to the root deploy path
           rsync -avz --delete \
             --exclude=".git" \
             --exclude="hapax-finder" \
+            --exclude="public" \
             ./ root@$DROPLET_IP:$DEPLOY_PATH
-          
+      
+          # Then sync the contents of public directory into public_html
+          rsync -avz --delete \
+            public/ root@$DROPLET_IP:$DEPLOY_PATH/public_html
+      
           # SSH into the server for post-deployment tasks
           ssh root@$DROPLET_IP "\
             # Install dependencies using Composer
@@ -45,7 +50,7 @@ jobs:
               cd $DEPLOY_PATH
               composer install --no-interaction --no-dev --optimize-autoloader
             fi
-
+      
             # Set permissions and reload the server
             chown -R www-data:www-data $DEPLOY_PATH && \
             chmod -R 755 $DEPLOY_PATH && \

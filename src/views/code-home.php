@@ -11,7 +11,7 @@
             $tags = ["project", "featured"];
             $listBy = "coolness";
             include __DIR__ . "/article-list.php";
-            // renderArticleList($articles, $tags, "coolness");
+            // renderArticleList($articles_front_matter, $tags, "coolness");
          ?>
       </inner-column>
    </section>

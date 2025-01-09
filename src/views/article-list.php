@@ -5,7 +5,7 @@ $listBy = $listBy ?? "date";
 $order = $order ?? "descending";
 $style = $style ?? "project";
 
-$articles = array_filter($articles, function ($article) use ($tags) {
+$articles_front_matter = array_filter($articles_front_matter, function ($article) use ($tags) {
    $boolFlag = true;
    foreach ($tags as $tag) {
        if (! in_array($tag, $article['tags'])) {
@@ -14,12 +14,12 @@ $articles = array_filter($articles, function ($article) use ($tags) {
    }
    return $boolFlag;
 });
-usort($articles, buildSorter($listBy, $order));
+usort($articles_front_matter, buildSorter($listBy, $order));
 
 ?>
 <ul class="article-list">
    <?php
-   foreach ($articles as $article):
+   foreach ($articles_front_matter as $article):
       if (validTags($article, $tags)): ?>
    <li>
       <?php 

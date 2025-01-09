@@ -7,7 +7,7 @@
       <?php
          $tags = ["project"];
          include __DIR__ . "/../views/article-list.php";
-         // renderArticleList($articles, $tags, "date", "descending");
+         // renderArticleList($articles_front_matter, $tags, "date", "descending");
       ?>
       </inner-column>
    </section>

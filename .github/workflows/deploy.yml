@@ -29,22 +29,22 @@ jobs:
           DEPLOY_PATH: /var/www/peterchinman.com
           GH_TOKEN: ${{ secrets.GH_TOKEN }} 
         run: |
-          ssh root@$DROPLET_IP "\
-            mkdir -p $DEPLOY_PATH/public_html"
-      
           # First sync all files except public/ and hapax-finder/ to the root deploy path
           rsync -avz --delete \
             --exclude=".git" \
             --exclude="hapax-finder" \
-            --exclude="public" \
             ./ root@$DROPLET_IP:$DEPLOY_PATH
-      
-          # Then sync the contents of public directory into public_html
-          rsync -avz --delete \
-            public/ root@$DROPLET_IP:$DEPLOY_PATH/public_html
       
           # SSH into the server for post-deployment tasks
           ssh root@$DROPLET_IP "\
+            # Remove existing public_html if it's not a symlink
+            if [ -d $DEPLOY_PATH/public_html ] && [ ! -L $DEPLOY_PATH/public_html ]; then
+              rm -rf $DEPLOY_PATH/public_html
+            fi
+
+            # Re-create the symlink from public_html to public
+            ln -sf $DEPLOY_PATH/public $DEPLOY_PATH/public_html
+            
             # Install dependencies using Composer
             if [ -f $DEPLOY_PATH/composer.json ]; then
               cd $DEPLOY_PATH

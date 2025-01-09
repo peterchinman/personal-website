@@ -8,7 +8,7 @@
          $tags = [];
          $style = "blog";
          include __DIR__ . "/../views/article-list.php";
-         // renderArticleList($articles, $tags, "date", "descending", "blog");
+         // renderArticleList($articles_front_matter, $tags, "date", "descending", "blog");
       ?>
       </inner-column>
    </section>

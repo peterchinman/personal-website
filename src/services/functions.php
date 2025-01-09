@@ -51,8 +51,8 @@ function buildSorter($key, $order){
    
 }
 // this has been moved from a function into just raw PHP
-// function renderArticleList($articles, $tags, $listBy = "date", $order = "descending", $style = "project"){
-//    $articles = array_filter($articles, function ($article) use ($tags) {
+// function renderArticleList($articles_front_matter, $tags, $listBy = "date", $order = "descending", $style = "project"){
+//    $articles_front_matter = array_filter($articles_front_matter, function ($article) use ($tags) {
 //       $boolFlag = true;
 //       foreach ($tags as $tag) {
 //           if (! in_array($tag, $article['tags'])) {
@@ -61,7 +61,7 @@ function buildSorter($key, $order){
 //       }
 //       return $boolFlag;
 //    });
-//    usort($articles, buildSorter($listBy, $order));
+//    usort($articles_front_matter, buildSorter($listBy, $order));
 //    include __DIR__ . "/../views/article-list.php";
 // }
 function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){
@@ -84,23 +84,21 @@ function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){
 // TODO: instead of running this live each time we need to serve, we should generate an array of front-matter as part of a deployment action. But for now, it's snappy and still works.
 function getMarkdownFrontMatter(){
 
-   echo "TEST YES ARE WE HERE?";
-
    $markdownFiles = getMarkdownFiles();
 
    // For `symfony/yaml`
    $frontMatterParser = new FrontMatterParser(new SymfonyYamlFrontMatterParser());
    
-   $articles = [];
+   $articles_front_matter = [];
 
    foreach ($markdownFiles as $file) {
       $path = __DIR__ .'/../../public/assets/articles/'. $file;
       $content = file_get_contents($path);
       $frontMatter = $frontMatterParser->parse($content)->getFrontMatter();
-      $articles[] = $frontMatter;
+      $articles_front_matter[] = $frontMatter;
    }
 
-   return $articles;
+   return $articles_front_matter;
 }
 
 // Converts the markdown in articles/$slug.md to HTML, and adds it the article-template

@@ -4,7 +4,7 @@ include __DIR__ . '/head.php';
 
 ?>
 
-<body class="<?= $source ?>">
+<body class="<?= $source ?? '' ?>">
    <header>
 
       <div class="name-section">

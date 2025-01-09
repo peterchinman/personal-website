@@ -11,6 +11,7 @@ define('CODE_URL', '/code');
 // get array of projects
 $articles = getMarkdownFrontMatter();
 
+var_dump($articles);
 
 // Get the requested URI
 $request_uri = $_SERVER['REQUEST_URI'];

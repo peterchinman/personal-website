@@ -30,7 +30,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }} 
         run: |
 
-          ssh root@$DROPLET_IP "
+          ssh root@${{ secrets.DROPLET_IP }} "
             mkdir -p $DEPLOY_PATH/public_html"
 
           rsync -avz --delete \

@@ -32,7 +32,7 @@ jobs:
           ssh root@$DROPLET_IP "\
             mkdir -p $DEPLOY_PATH/public_html"
       
-          # First sync all files except public directory to the root deploy path
+          # First sync all files except public/ and hapax-finder/ to the root deploy path
           rsync -avz --delete \
             --exclude=".git" \
             --exclude="hapax-finder" \
@@ -50,9 +50,8 @@ jobs:
               cd $DEPLOY_PATH
               composer install --no-interaction --no-dev --optimize-autoloader
             fi
-
-            # Set correct permissions and reload server
-            find $DEPLOY_PATH -type f -exec chmod 644 {} \; && \
-            find $DEPLOY_PATH -type d -exec chmod 755 {} \; && \
+      
+            # Set permissions and reload the server
             chown -R www-data:www-data $DEPLOY_PATH && \
+            chmod -R 755 $DEPLOY_PATH && \
             systemctl reload apache2"

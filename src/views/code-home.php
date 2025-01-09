@@ -10,7 +10,7 @@
          <?php
             $tags = ["project", "featured"];
             $listBy = "coolness";
-            include __DIR__ . "/../views/article-list.php";
+            include __DIR__ . "/article-list.php";
             // renderArticleList($articles, $tags, "coolness");
          ?>
       </inner-column>

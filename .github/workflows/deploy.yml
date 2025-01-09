@@ -31,8 +31,7 @@ jobs:
         run: |
 
           ssh root@$DROPLET_IP "
-            mkdir -p $DEPLOY_PATH/public_html
-          "
+            mkdir -p $DEPLOY_PATH/public_html"
 
           rsync -avz --delete \
             --exclude=".git" \

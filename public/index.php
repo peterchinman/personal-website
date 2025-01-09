@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 require __DIR__ . '/../vendor/autoload.php';  // Include Composer's autoloader
 require __DIR__ . '/../src/services/commonmark.php'; // Commonmark functions
 require __DIR__ . '/../src/services/functions.php';

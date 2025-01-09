@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.9.0
@@ -32,38 +30,26 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }} 
         run: |
 
-          # First time setup - create directories if they don't exist
           ssh root@$DROPLET_IP "
-            mkdir -p $DEPLOY_PATH
-            # Remove existing public_html if it's not a symlink
-            if [ -d $DEPLOY_PATH/public_html ] && [ ! -L $DEPLOY_PATH/public_html ]; then
-              rm -rf $DEPLOY_PATH/public_html
-            fi"
+            mkdir -p $DEPLOY_PATH/public_html
+          "
 
-          # Deploy the code
-          ssh root@$DROPLET_IP "
-            cd $DEPLOY_PATH && \
-            git config --global --add safe.directory $DEPLOY_PATH && \
-            git fetch --all && \
-            git reset --hard origin/master && \
-            
-            # Create symlink if it doesn't exist
-            if [ ! -L $DEPLOY_PATH/public_html ]; then
-              ln -sf $DEPLOY_PATH/public $DEPLOY_PATH/public_html
-            fi && \
-            
-            # Install dependencies if needed
-            if [ -f composer.json ]; then
+          rsync -avz --delete \
+            --exclude=".git" \
+            --exclude="hapax-finder" \ # hapax-finder lives in same folder, make sure it's not overwritten
+            ./ root@${{ secrets.DROPLET_IP }}:$DEPLOY_PATH
+          
+          # SSH into the server for post-deployment tasks
+          ssh root@${{ secrets.DROPLET_IP }} "
+            # Install dependencies using Composer
+            if [ -f $DEPLOY_PATH/composer.json ]; then
+              cd $DEPLOY_PATH
               composer install --no-interaction --no-dev --optimize-autoloader
-            fi && \
-            if [ -f package.json ]; then
-              npm ci && \
-              npm run build
-            fi && \
-            
-            # Set proper permissions
+            fi
+
+            # Set permissions and reload the server
             chown -R www-data:www-data $DEPLOY_PATH && \
             chmod -R 755 $DEPLOY_PATH && \
-            
-            # Reload web server
+
+            # Reload Web Server
             systemctl reload apache2"

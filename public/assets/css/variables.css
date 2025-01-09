@@ -53,7 +53,9 @@
 
 	--card-padding-inline: 24px;
 
-   /* COLORS IN USE */
+
+
+	/* GREY-SCALE */
 
 	--ink: 							var(--neutral-1000);
 	--code-bg: 						var(--neutral-0);
@@ -64,7 +66,23 @@
 	--nav-bg: 						var(--neutral-100);
 	--body-bg:						var(--neutral-30);
 
-	--article-card-bg: var(--neutral-0);
+	--article-card-bg: 			var(--neutral-0);
+
+   /* COLORS EXPERIMENTS */
+
+	--body-bg:						#FFFFF8;
+	--header-bg: 					#F9F5F9;			
+	--article-card-bg: 			#F9F5F9;
+	--nav-bg: 						transparent;
+	
+	--ink: 							#111111;
+	
+	
+	
+	
+	
+
+	
 
 	
 }

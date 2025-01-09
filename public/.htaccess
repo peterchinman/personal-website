@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# Ignore all requests starting with /hapax-finder
+RewriteCond %{REQUEST_URI} ^/hapax-finder [NC]
+RewriteRule ^ - [L]
+
 # Redirect everything to index.php except for real files and directories
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

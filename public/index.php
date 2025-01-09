@@ -57,9 +57,9 @@ switch (true) {
       }
       break;
 
-   case ($request_uri['path'] === '/hapax-finder'):
-      include __DIR__ . '/../hapax-finder/index.php';
-      break;
+   // case ($request_uri['path'] === '/hapax-finder'):
+   //    include __DIR__ . '/../hapax-finder/index.php';
+   //    break;
 
    // 404 Not Found
    default:

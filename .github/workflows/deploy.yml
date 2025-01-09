@@ -29,17 +29,17 @@ jobs:
           DEPLOY_PATH: /var/www/peterchinman.com
           GH_TOKEN: ${{ secrets.GH_TOKEN }} 
         run: |
-
-          ssh root@${{ secrets.DROPLET_IP }} "
+          ssh root@$DROPLET_IP "\
             mkdir -p $DEPLOY_PATH/public_html"
 
+          # Sync files excluding git and hapax-finder
           rsync -avz --delete \
             --exclude=".git" \
-            --exclude="hapax-finder" \ # hapax-finder lives in same folder, make sure it's not overwritten
-            ./ root@${{ secrets.DROPLET_IP }}:$DEPLOY_PATH
+            --exclude="hapax-finder" \
+            ./ root@$DROPLET_IP:$DEPLOY_PATH
           
           # SSH into the server for post-deployment tasks
-          ssh root@${{ secrets.DROPLET_IP }} "
+          ssh root@$DROPLET_IP "\
             # Install dependencies using Composer
             if [ -f $DEPLOY_PATH/composer.json ]; then
               cd $DEPLOY_PATH
@@ -49,6 +49,4 @@ jobs:
             # Set permissions and reload the server
             chown -R www-data:www-data $DEPLOY_PATH && \
             chmod -R 755 $DEPLOY_PATH && \
-
-            # Reload Web Server
             systemctl reload apache2"

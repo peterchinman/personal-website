@@ -1,7 +1,7 @@
 <main>
    <section class="bio">
       <inner-column>
-         <p class="loud-voice">Poet-turned-coder building tools for manipulating&nbsp;language.</p>
+         <p class="loud-voice">Poet-turned-coder building tools for manipulating language.</p>
       </inner-column>
    </section>
    <section class="projects-section">

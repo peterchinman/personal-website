@@ -23,6 +23,7 @@ switch (true) {
       $source = "code";
       include __DIR__ . '/../src/views/header.php';
       include __DIR__ . '/../src/views/code-home.php';
+      break;
 
    case (preg_match('/^\/work(\/.*)?$/', $request_uri['path'])):
       include __DIR__ . '/../src/views/header.php';

@@ -11,7 +11,7 @@
 
 body {
 	font-family: var(--heading);
-	background-color: var(--neutral-30);
+	background-color: var(--body-bg);
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -28,10 +28,10 @@ inner-column{
  
  
 header{
-	padding-top: 3rem;
-	background-color: var(--neutral-100);
+	background-color: var(--header-bg);
+	padding-top: 2rem;
 
-	.top-part {
+	.name-section inner-column {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
@@ -55,8 +55,6 @@ header{
 		grid-template-rows: min-content 0fr;
 		column-gap: .5em;
 		padding-bottom: 2rem;
-
-		background-color: var(--neutral-100);
 	
 		font-size: var(--fontSize-1);
 		font-weight: 600;
@@ -89,14 +87,12 @@ header{
 				padding-inline: var(--input-padding-inline);
 				padding-block: var(--input-padding-block);
 				position: relative;
-				/* text-decoration: underline; */
 
 				.is-a-blank:has(.selection-options.selected) &, &:focus {
 					border: 2px solid purple;
 					box-sizing: border-box;
 				}
 				
-
 				&:after {
 					content: url(../images/rounded-triangle.svg);
 
@@ -109,8 +105,6 @@ header{
 		}
 
 		.selection-options {
-			/* display: none; */
-			/* max-height: 0; */
 			overflow: hidden;
 			min-height: 0;
 			background-color: var(--neutral-0);
@@ -120,10 +114,8 @@ header{
 			border-radius: 4px;
 			box-shadow: 0px 6px 10px -3px rgba(0, 0, 0, 0.4);
 			max-width: var(--input-max-width);
-			/* transition: all 1s; */
 
 			&.selected {
-				/* display: block; */
 				max-height: 100%;
 			}
 
@@ -135,18 +127,21 @@ header{
 				}
 			}
 		}
-	
-		
-	
 	}
 
-	.site-nav {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: var(--medium-space);
-		padding-block: var(--medium-space);
+	nav {
+		background-color: var(--nav-bg);
 
+		.site-nav {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: var(--medium-space);
+			padding-block: var(--medium-space);
+			
+	
+		}
 	}
+	
  }
 
 /* ===PRIMARY=== */

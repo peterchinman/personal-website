@@ -3,7 +3,7 @@ title: Random Word Generator
 slug: random-word-generator
 date: 2024-12-30
 subtitle: Find fate in the stochastic. Expand your vocabulary.
-site: https://peterchinman.com/projects/random-word-generator
+site: https://randomwordgenerator.info
 code: https://github.com/peterchinman/random-word-generator-site
 tags:
   - project

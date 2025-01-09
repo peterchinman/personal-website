@@ -10,9 +10,14 @@
 
    <!-- GOOGLE fonts -->
 
-   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Spectral:ital@0;1&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Spectral:ital@0;1&display=swap" rel="stylesheet"> -->
+
+	<!-- TODO this contains more fonts than I need, just for testing -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Spectral:ital@0;1&display=swap" rel="stylesheet">
 
    <!-- end GOOGLE fonts -->
 

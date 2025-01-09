@@ -20,9 +20,11 @@
 
    /* FONT */
 
-   --heading: 'Jost', sans-serif;
+   /* --heading: 'Jost', sans-serif; */
+	--heading: 'Outfit', sans-serif;
+	/* --heading: var(--mono); */
    --body-copy: 'Spectral', serif;
-   --mono: "Roboto Mono", monospace;
+   --mono: "Geist Mono", monospace;
 
    /* --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
 
@@ -58,6 +60,9 @@
 	--footnote-ref-bg: 			var(--neutral-0);
 	--footnote-ref-nested-bg: 	var(--neutral-50);
 	--footnote-bg: 				var(--neutral-0);
+	--header-bg: 					var(--neutral-100);
+	--nav-bg: 						var(--neutral-100);
+	--body-bg:						var(--neutral-30);
 
 	--article-card-bg: var(--neutral-0);
 

@@ -8,7 +8,6 @@ use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkRenderer;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use League\CommonMark\Extension\Footnote\FootnoteExtension;
-use League\CommonMark\Extension\SmartPunct\SmartPunctExtension;
 
 
 
@@ -46,12 +45,6 @@ $config = [
          'normalize' => 'relative',
          'placeholder' => null,
      ],
-     'smartpunct' => [
-        'double_quote_opener' => '“',
-        'double_quote_closer' => '”',
-        'single_quote_opener' => '‘',
-        'single_quote_closer' => '’',
-    ],
      
 
    ];
@@ -63,8 +56,6 @@ $config = [
    $environment->addExtension(new HeadingPermalinkExtension());
    $environment->addExtension(new TableOfContentsExtension());
    $environment->addExtension(new FrontMatterExtension());
-   $environment->addExtension(new SmartPunctExtension());
-
 
 
 

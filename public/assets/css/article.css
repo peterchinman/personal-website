@@ -44,7 +44,6 @@ article, .reading-section {
 
 	ul {
 		list-style-type: disc;
-		margin-left: 1.5rem;
 	}
 
 	ol {
@@ -53,6 +52,7 @@ article, .reading-section {
 
 	ul, ol {
 		padding-block: 1lh;
+		margin-left: 1.5rem;
 	}
 
 	code {
@@ -82,8 +82,8 @@ article, .reading-section {
 	}
 
 	pre {
-		margin-inline: calc(-1 * var(--page-padding));
-		padding-inline: var(--page-padding);
+		/* margin-inline: calc(-1 * var(--page-padding));
+		padding-inline: var(--page-padding); */
 		padding-block: 1lh;
 		background-color: var(--code-bg);
 	}
@@ -176,17 +176,29 @@ article, .reading-section {
 	
 	}
 
-	.footnotes, .footnote-container {
+	.footnotes {
+		display: none;
+	}
+
+	pre, .footnote-container{
+		/* this complex hacky margin calc creates a negative margin to extend the footnote bg color to the page edges */
+		/* TODO probably would be cleaner / better if instead we applied the page padding to individual <p>, <ol> etc, so that we didn't have to resort to this. */
+		margin-inline: min(calc(-1 * var(--page-padding)), calc(-1 * ((100vw - var(--max-width) + var(--page-padding) * 2) / 2)));
+		
+		padding-left: max(3rem, calc((100vw - var(--max-width)) / 2));
+      padding-right: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
+	}
+
+	.footnote-container {
       p, li{
          font-size: var(--fontSize-neg1);
 			max-width: 688px;;
       }
-      margin-block: 2lh;
-		padding-block: 2lh;
-		margin-inline: min(calc(-1 * var(--page-padding)), calc(-1 * ((100vw - var(--max-width) + var(--page-padding) * 2) / 2)));
+      margin-block: 1lh;
+		padding-block: 1lh;
+		
+
 		background-color: var(--footnote-bg);
-		padding-left: max(3rem, calc((100vw - var(--max-width)) / 2));
-      padding-right: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
 		
 
       .footnote {
@@ -258,7 +270,9 @@ article, .reading-section {
 			/* padding-inline: 0; */
 		}
 		
-		.footnotes, .footnote-container {
+		.footnote-container, pre  {
+
+			/* TODO again, crazy calcs, would be better if we just set padding on individual elements*/
 			--page-padding: 2rem;
 			margin-left: calc(-1 * (100vw / 12 * 2 + var(--page-padding)));
 			margin-right: calc(-1 * (100vw / 12 * 4 + var(--page-padding)));

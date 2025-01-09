@@ -50,8 +50,9 @@ jobs:
               cd $DEPLOY_PATH
               composer install --no-interaction --no-dev --optimize-autoloader
             fi
-      
-            # Set permissions and reload the server
+
+            # Set correct permissions and reload server
+            find $DEPLOY_PATH -type f -exec chmod 644 {} \; && \
+            find $DEPLOY_PATH -type d -exec chmod 755 {} \; && \
             chown -R www-data:www-data $DEPLOY_PATH && \
-            chmod -R 755 $DEPLOY_PATH && \
             systemctl reload apache2"

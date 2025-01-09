@@ -58,7 +58,7 @@ switch (true) {
       break;
 
    case ($request_uri['path'] === '/hapax-site'):
-      include __DIR__ . '/../src/hapax-site/index.php';
+      include __DIR__ . '/../hapax-site/index.php';
       break;
 
    // 404 Not Found

@@ -84,6 +84,8 @@ function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){
 // TODO: instead of running this live each time we need to serve, we should generate an array of front-matter as part of a deployment action. But for now, it's snappy and still works.
 function getMarkdownFrontMatter(){
 
+   echo "TEST YES ARE WE HERE?";
+
    $markdownFiles = getMarkdownFiles();
 
    // For `symfony/yaml`

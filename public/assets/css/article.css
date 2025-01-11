@@ -215,6 +215,12 @@ article, .reading-section {
             content: attr(data-index);
             font-size: 2rem;
          }
+
+			pre {
+				margin-inline: 0;
+				padding-left: 1rem	;
+				padding-right: 0;
+			}
       }
 
       .footnote:not(:first-child) {
@@ -327,17 +333,22 @@ article, .reading-section {
 
          .footnote {
        
-            --sn-margin-left: max(3.5rem, 4vw);
-            --sn-margin-right: 3rem;
-            --sn-max-width: 50ch;  
+            --sn-margin-left: 7vw;
+            --sn-margin-right: 0rem;
+            --sn-max-width: 70ch;
             position: absolute;
             left: 100%;
-            min-width: calc((100vw - var(--max-width)) / 2 - var(--sn-margin-left) - var(--sn-margin-right));
+				/* ok so we're getting the right-most 3 columns, adding a medium-space to account for the gaps, and then subtracting the margins */
+				min-width: calc((100vw - var(--page-padding)) / 4 + var(--medium-space) - var(--sn-margin-left) - var(--sn-margin-right));
             > * {
-               max-width: var(--sn-max-width);
+               max-width: var(--sn-max-width) !important;
             }
             
             margin-left: var(--sn-margin-left);
+
+				.footnote-ref {
+					background-color: var(--footnote-ref-bg);
+				}
          }
 
          .footnote:not(:first-child) {

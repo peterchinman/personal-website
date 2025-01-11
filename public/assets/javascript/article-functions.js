@@ -72,6 +72,7 @@ function updateFootnotePositions(footnotes){
     // we have to use this convoluted filter in order to support footnotes within footnotes
     const matchingRef = Array.from(footnoteRefs).filter((ref) => ref.textContent == id)[0];
 
+    element.style.top = '';
     // Put footnote under parent-paragaph (TODO we only need to run this once, should be grouped with unlistify())
     // but only if we haven't already
     if (!element.closest('.footnote-container')){
@@ -161,7 +162,7 @@ window.onload = () => {
 
     document.addEventListener("click", (event) => {
       if (event.target.matches('.footnote-ref')){
-        // event.preventDefault();
+        event.preventDefault();
         event.target.classList.toggle('selected');
         const index = event.target.textContent - 1;
         const footnotes = document.querySelectorAll('.footnote');

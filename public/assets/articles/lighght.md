@@ -1,7 +1,6 @@
 ---
 title: lighght
 slug: lighght
-date: 2024-12-30
 subtitle: A silent letter detector.
 site: https://peterchinman.github.io/lighght
 code: https://github.com/peterchinman/lighght
@@ -10,6 +9,7 @@ tags:
   - featured
   - language
 coolness: 7
+published: 2024-12-30
 ---
 # A Silent Letter Detector
 

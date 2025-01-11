@@ -1,5 +1,4 @@
 article, .reading-section {
-	overflow-x: hidden;
 
    position: relative;
    padding-top: var(--big-space);

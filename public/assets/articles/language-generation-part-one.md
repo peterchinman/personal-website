@@ -1,12 +1,13 @@
 ---
 title: A Personal History of Artificial Language Generation, Part One
 slug: language-generation-part-one
-date: 2024-05-15
+subtitle: 
 tags:
   - blog
   - language
+published: 2024-05-15
+updated: 
 ---
-
 # Mad Libs
 
 The books were printed with such cheap paper. Flimsy unbleached pages with all those underlined blanks. I think we first did them in class—as a lesson in the parts of speech—but we saw their true potential. What’s the dirtiest verb a ten year old can think of. The joy was in relinquishing control. We wouldn’t have cared if we had written the stories ourselves. But allowing the mad lib machine to construct a story for you could double us over with laughter.

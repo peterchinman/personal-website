@@ -47,3 +47,7 @@ blog-card .description {
 em {
 	font-style: italic;
 }
+
+.mono {
+	font-family: var(--mono);
+}

@@ -22,7 +22,8 @@ $request_uri = parseRequestURI($request_uri);
 switch (true) {
    // Code
    case ($request_uri['path'] === BASE_URL || $request_uri['path'] === '/index.php' || $request_uri['path'] === CODE_URL):
-      $source = "code";
+      // Source is here in case I want to split out "code" vs "poem" vs "sculpture" pages on peterchinman.com. Currently not being used.
+      // $source = "code";
       include __DIR__ . '/../src/views/header.php';
       include __DIR__ . '/../src/views/code-home.php';
       break;
@@ -41,14 +42,21 @@ switch (true) {
    // Blog is cross-site, but gets passed a ?source=x query parameter, which tells: 1) the header which site nav to use, and 2) tells the blog what content to display.
    // TODO have this tag listed on the blog page, with a link to click "show all"
    case (preg_match('/^\/blog(\/.*)?$/', $request_uri['path'])):
-      $source = $request_uri['query']['source'] ?? "blog";
+      // no longer useing source, but maybe we will want to?? 
+      // $source = $request_uri['query']['source'] ?? "blog";
       // TODO priority very low: should key be a single string, or possibly an array of keys? So that we can re-use this for all searches
-      // TODO priority high: make this $key work for showing only posts tagged "code" in blog
       // issue of how to encode array into query parameters, internet suggests that: `?key[]=code&key[]=literature` would work
-      $key = $request_uri['query']['key'] ?? '';
+      
 
       include __DIR__ . '/../src/views/header.php';
       if ($request_uri['path'] === '/blog') {
+         $tag = $request_uri['query']['tag'] ?? '';
+         // TODO refactor this.
+         $tags = [];
+         if($tag){
+            $tags = array($tag);
+         }
+         
          include __DIR__ . '/../src/views/blog.php';  // Show the projects list
       } else {
          // Handle individual project pages

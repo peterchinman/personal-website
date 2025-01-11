@@ -53,7 +53,7 @@ include __DIR__ . '/head.php';
          // if (isset($source) && ($source === "code" || (($request_uri['query']['key'] ?? null) === "code"))): ?>
          <ul class="site-nav">
             <li><a href="<?= BASE_URL ?>work">Work</a></li>
-            <li><a href="<?= BASE_URL ?>blog?source=<?= $source ?? '' ?>">Blog</a></li>
+            <li><a href="<?= BASE_URL ?>blog">Blog</a></li>
             <li><a href="<?= BASE_URL ?>bio">Bio</a></li>
          </ul>
          <?php //endif; ?>

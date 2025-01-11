@@ -26,15 +26,6 @@ function parseRequestURI($request_uri) {
    ];
 }
 
-function validTags($article, $tags){
-   $valid = True;
-   foreach($tags as $tag){
-      if (!in_array($tag, $article["tags"])){
-         $valid = False;
-      }
-   }
-   return $valid;
-}
 function buildSorter($key, $order){
    return function ($a, $b) use ($key, $order) {
       if ($a[$key] == $b[$key]) {
@@ -50,20 +41,7 @@ function buildSorter($key, $order){
   };
    
 }
-// this has been moved from a function into just raw PHP
-// function renderArticleList($articles_front_matter, $tags, $listBy = "date", $order = "descending", $style = "project"){
-//    $articles_front_matter = array_filter($articles_front_matter, function ($article) use ($tags) {
-//       $boolFlag = true;
-//       foreach ($tags as $tag) {
-//           if (! in_array($tag, $article['tags'])) {
-//               $boolFlag = false;
-//           }
-//       }
-//       return $boolFlag;
-//    });
-//    usort($articles_front_matter, buildSorter($listBy, $order));
-//    include __DIR__ . "/../views/article-list.php";
-// }
+
 function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){
    // Ensure the folder exists
    if (!is_dir($folder)) {
@@ -77,6 +55,7 @@ function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){
   $markdownFiles = array_filter($files, function ($file) use ($folder) {
       return is_file($folder . $file) && pathinfo($file, PATHINFO_EXTENSION) === 'md';
   });
+
   // Return the list of .md files
   return array_values($markdownFiles);
 }
@@ -97,7 +76,6 @@ function getMarkdownFrontMatter(){
       $frontMatter = $frontMatterParser->parse($content)->getFrontMatter();
       $articles_front_matter[] = $frontMatter;
    }
-
    return $articles_front_matter;
 }
 

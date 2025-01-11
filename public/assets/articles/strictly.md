@@ -1,8 +1,7 @@
 ---
 title: Strictly
 slug: strictly
-date: 2024-12-30
-subtitle: A rhyme & meter checker built for poets
+subtitle: A rhyme & meter checker built for poets.
 site: https://peterchinman.github.io/strictly/
 code: https://github.com/peterchinman/strictly
 tags:
@@ -10,6 +9,7 @@ tags:
   - featured
   - language
 coolness: 10
+published: 2024-12-30
 ---
 
 I wanted to make a tool that would help someone compose poems in strict forms, but in a way that trusted the author when they wanted to deviate from the form. Guiding but not ruling. To do that I needed to work in a lot of fuzziness.
@@ -17,12 +17,12 @@ I wanted to make a tool that would help someone compose poems in strict forms, b
 
 When people talk about rhyme they usually mean "perfect rhyme"—
 
-- "boss" / "toss"
-- "pulley" / "bully"
+- boss / toss
+- pulley / bully
 
-Perfect rhyme is boring. And evil. It pushes soulless pedants to say things like "nothing rhymes with orange". Rhyme is one of our fundamental tools of linguistic expression, and perfect rhyme flattens it into a pompous child's play-thing.
+Perfect rhyme is boring and malicious. It pushes soulless pedants to say things like "nothing rhymes with orange". Rhyme is one of our fundamental tools of linguistic expression, and perfect rhyme flattens it into a pompous child's play-thing.
 
-So, for the Rhyme Checker I didn't want to ask "do these words rhyme?" I wanted, instead, a measure of distance between pronunciations. Zero distance: yes, perfect rhyme—but widen the rhyme-aperture and you get to behold the rhyme between "orange" and "door hinge" in all of its glory.
+So, for the Rhyme Checker I didn't want to ask "do these words rhyme?" I wanted, instead, a measure of distance between pronunciations. Zero distance: yes, great, perfect rhyme—but widen the rhyme-aperture and you get to behold the rhyme between "orange" and "door hinge" in all of its glory. A little further and you can see "worm" and "swarm". 
 
 ## Step One: Vowels
 
@@ -80,7 +80,7 @@ The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagon
 ### The Diphthong Problem
 
 
-![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](/assets/images/the-dipthong-problem.png)
+![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](the-dipthong-problem.png)
 
 Some vowels are not just points in vowel space. What we call "diphthongs" are a movement between two points in vowel space. For example, the vowel in "boy"—if you slow down your pronunciation you can hear the sound moving from a vowel near "oh" to a vowel near "ee".
 

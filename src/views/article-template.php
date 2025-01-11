@@ -8,7 +8,7 @@
    <?php if(file_exists(__DIR__ . "/../../public/assets/articles/" . $frontMatter["slug"] . ".png")): ?>
 
    <picture>
-      <img src="<?= BASE_URL . "assets/articles/" . $frontMatter["slug"] ?>.png" alt="A screenshot of the interface of <?= $frontMatter["title"] ?>">
+      <img src="<?= BASE_URL . "assets/articles/screenshots" . $frontMatter["slug"] ?>.png" alt="A screenshot of the interface of <?= $frontMatter["title"] ?>">
    </picture>
 
    <?php endif; ?>

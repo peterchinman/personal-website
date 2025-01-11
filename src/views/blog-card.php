@@ -9,7 +9,7 @@
    <p class="description"><?= $article["subtitle"] ?></p>
    <?php endif; ?> -->
    <?php // checking if array_key_exists as overkill, we should only be pulling articles that have a published date
-   if(array_key_exists("published", $article)): ?>
+   if(array_key_exists("published", $article) && $article["published"]) : ?>
    <p class="date"><?= date('Y-m-d', $article["published"]) ?></p>
    <?php endif; ?>
 

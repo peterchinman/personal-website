@@ -5,30 +5,18 @@ $listBy = $listBy ?? "published";
 $order = $order ?? "descending";
 $style = $style ?? "project";
 
+// Filter by Tags
 if(count($tags) > 0) {
    $articles_front_matter = array_filter($articles_front_matter, function ($article) use ($tags) {
       $boolFlag = true;
-      // only check if article has tags
-      if(count($article["tags"]) > 0) {
-         foreach ($tags ?? [] as $tag) {
-            if (! in_array($tag, $article['tags'])) {
-               $boolFlag = false;
-            }
-         }
-         
-      }
-      else {
-         if($tags) {
+      foreach ($tags ?? [] as $tag) {
+         if (! in_array($tag, $article['tags'] ?? [])) {
             $boolFlag = false;
          }
-      }
-
+      }    
       return $boolFlag;
-      
    });
 } 
-   
-
 
 usort($articles_front_matter, buildSorter($listBy, $order));
 

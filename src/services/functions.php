@@ -28,18 +28,38 @@ function parseRequestURI($request_uri) {
 
 function buildSorter($key, $order){
    return function ($a, $b) use ($key, $order) {
-      if ($a[$key] == $b[$key]) {
+      $valA = $a[$key] ?? null;
+      $valB = $b[$key] ?? null;
+
+      // Handle missing keys
+      if ($valA === null && $valB === null) {
+         return 0; // Treat missing values as equal
+      }
+      if ($valA === null) {
+         return $order === "descending" ? 1 : 1;  // Push nulls to end regardless of sort order
+      }
+      if ($valB === null) {
+         return $order === "descending" ? -1 : -1;  // Push nulls to end regardless of sort order
+      }
+
+
+      // Need strcasecmp() for comparing strings because
+      if (is_string($valA) && is_string($valB)) {
+         return $order === "descending"
+            ? strcasecmp($valB, $valA)
+            : strcasecmp($valA, $valB);
+      }
+
+      if ($valA == $valB) {
          return 0;
       }
       if ($order === "descending") {
-         return ($a[$key] > $b[$key]) ? -1 : 1;
+         return ($valA > $valB) ? -1 : 1;
       }
       else {
-         return ($a[$key] < $b[$key]) ? -1 : 1;
-      } 
-      
+         return ($valA < $valB) ? -1 : 1;
+      }    
   };
-   
 }
 
 function getMarkdownFiles($folder = __DIR__ . '/../../public/assets/articles/'){

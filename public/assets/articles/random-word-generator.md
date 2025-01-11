@@ -13,7 +13,7 @@ published: 2024-01-10
 updated:
 ---
 
-For years I've loved Random Word Generators. I’ve used them as part of my writing practice: when I sit down to write—long-hand, in my journal—I’d generate a list of random words and any time I felt the line start to slacken, I’d reach for one of the words to incorporate, to break me free of myself. I judged how well my writing was going by how related the words seemed.
+For years I've loved Random Word Generators. I've used them as part of my writing practice: when I sit down to write—long-hand, in my journal—I'd generate a list of random words and any time I felt the line start to slacken, I'd reach for one of the words to incorporate, to break me free of myself. I judged how well my writing was going by how related the words seemed.
 
 Unfortunately all of the Random Word Generators online are ugly. [So I made my own](https://randomwordgenerator.info/).
 
@@ -32,11 +32,11 @@ Whereas now, in my day to day life, I rarely come across an unfamiliar word. I e
 
 The first task was to find a dictionary.
 
-You can download Wiktionary, but it’s huge, and I'd read that it’s difficult to work with. My research instead lead me to [Wordset](https://github.com/wordset/wordset-dictionary) which is an open source dictionary built on top of [WordNet](https://wordnet.princeton.edu/), an interesting project from Princeton that’s sort of like a super-powered thesaurus. Wordset as a project is defunct, but it's available for download, it's open source, and it's arranged as a easy-to-process JSON. It's also fairly large with ~177,000 entries.[^1]
+You can download Wiktionary, but it's huge, and I'd read that it's difficult to work with. My research instead lead me to [Wordset](https://github.com/wordset/wordset-dictionary) which is an open source dictionary built on top of [WordNet](https://wordnet.princeton.edu/), an interesting project from Princeton that's sort of like a super-powered thesaurus. Wordset as a project is defunct, but it's available for download, it's open source, and it's arranged as a easy-to-process JSON. It's also fairly large with ~177,000 entries.[^1]
 
-Once I’d settled on the dictionary, I converted it from a JSON to a SQLite database. Which was much more involved than that sentence suggests, because, at the time, the only programming language I knew was C++ and so I had to learn:
+Once I'd settled on the dictionary, I converted it from a JSON to a SQLite database. Which was much more involved than that sentence suggests, because, at the time, the only programming language I knew was C++ and so I had to learn:
 - How to read JSON with C++. Answer: the lovely [nlohmann/json](https://github.com/nlohmann/json) library
-- How to use SQLite with C++. I’d done some simple querying with SQLite when I did Harvard's CS50 course online, which, I did not realize at the time, had abstracted away all of complications of actually interacting with SQLite directly.
+- How to use SQLite with C++. I'd done some simple querying with SQLite when I did Harvard's CS50 course online, which, I did not realize at the time, had abstracted away all of complications of actually interacting with SQLite directly.
 
  I got it all working, and then my computer chewed for a couple hours, constructing a SQLite database from the JSON file. I tested it with a few queries, and it seemed to be working.
 
@@ -75,7 +75,7 @@ but, not all of the same elements mapped to the same colors between color scheme
 
 # Results
 
-Also, I wasn’t sure about this, but I suspected that the available Random Word Generators were using a fairly limited dictionary. They rarely generate words I’m unfamiliar with.
+Also, I wasn't sure about this, but I suspected that the available Random Word Generators were using a fairly limited dictionary. They rarely generate words I'm unfamiliar with.
 
 To compare I sampled 40 random words from:
 
@@ -103,13 +103,13 @@ unfamiliar words: 10/40
 
 To be honest, 25% unfamiliarity might make this worse for certain purposes.
 
-Things I’d like to accomplish in the future.
+Things I'd like to accomplish in the future.
 
 Expand the dictionary.
 Find other lists of words that I can cross-reference against my dictionary, to generate differing levels of rareness.
-Alternatively, I’m imagining that you could attach a rare-ness score to each word, and then instead of sampling randomly, we could sample, weighted by rareness.
+Alternatively, I'm imagining that you could attach a rare-ness score to each word, and then instead of sampling randomly, we could sample, weighted by rareness.
 
-I’d like to be able to set certain restrictions like:
+I'd like to be able to set certain restrictions like:
 - number of syllables
 - contains certain phonemes
 - rhymes with

@@ -29,7 +29,8 @@ inner-column{
  
 header{
 	background-color: var(--header-bg);
-	padding-top: 2rem;
+	padding-top: var(--big-space);
+	padding-bottom: var(--medium-space);
 
 	.name-section inner-column {
 		display: flex;
@@ -151,7 +152,7 @@ main {
 	/* flex-grow: 2; */
 }
  
-main section:first-child {
+main section:first-child, main article {
 	padding-block: var(--big-space);
 }
 
@@ -301,6 +302,23 @@ main section:first-child {
 		
 	}
 }
+
+/* ===BIO=== */
+
+.rc-scout-wrapper {
+	margin-block: var(--medium-space);
+	padding-block: var(--medium-space);
+	padding-inline: 1rem;
+	background-color: var(--neutral-100);
+
+	p {
+		font-family: var(--mono);
+		font-size: var(--fontSize-neg1);
+	}
+
+	
+}
+
 
 
 

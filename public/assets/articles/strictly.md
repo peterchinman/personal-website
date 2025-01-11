@@ -43,7 +43,7 @@ This might lead one to the natural thought of using Euclidean Distance to measur
 	```
 	But the vowels in "bet" and "bot" are each—in, I think, a meaningful sense—"adjacent" to the vowel in "bat": one can move thru vowel space from one to the other without encountering another vowel.
 	
-	One reason for the discrepancy in the distances is that they are moving along different axes from “bat”—"bet" along the F1 axis, and "bot" along the F2 axis. We could try to correct for that by scaling the axes. But it’s not obvious that this would be a fool-proof solution either, given that we have different perceptual responses to different frequencies of sound.
+	One reason for the discrepancy in the distances is that they are moving along different axes from "bat"—"bet" along the F1 axis, and "bot" along the F2 axis. We could try to correct for that by scaling the axes. But it's not obvious that this would be a fool-proof solution either, given that we have different perceptual responses to different frequencies of sound.
 
 
 
@@ -84,9 +84,9 @@ The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagon
 
 Some vowels are not just points in vowel space. What we call "diphthongs" are a movement between two points in vowel space. For example, the vowel in "boy"—if you slow down your pronunciation you can hear the sound moving from a vowel near "oh" to a vowel near "ee".
 
-This raises the thorny problem of what exactly we mean by “the distance between” a single-point vowel (called a monophthong) and a diphthong. Do we measure from the starting point of the diphthong? The ending point? From the closest point to the vowel we're measuring it against? 
+This raises the thorny problem of what exactly we mean by "the distance between" a single-point vowel (called a monophthong) and a diphthong. Do we measure from the starting point of the diphthong? The ending point? From the closest point to the vowel we're measuring it against? 
 
-Or should we not treat a diphthong as *a* vowel at all, but as in fact two separate vowels? This seems attractively rigorous, but I’m not sure it tracks with how we typically conceive of vowels in English? Maybe I’ll try this method out at some point and compare the results. 
+Or should we not treat a diphthong as *a* vowel at all, but as in fact two separate vowels? This seems attractively rigorous, but I'm not sure it tracks with how we typically conceive of vowels in English? Maybe I'll try this method out at some point and compare the results. 
 
 What I did instead is that I sat down, pronouncing the vowel sounds to myself, building on top of the beautiful abstract edifice of the Vowel Hex Graph, an arbitrary / idiosyncratic maze of adjacencies.
 
@@ -98,15 +98,15 @@ This was my first graph algorithm, very cool.
 
 ## Step Two: Consonants
 
-The next step is to find the distance between consonants. But I haven’t actually implemented this yet because consonants are significantly more complex than vowels.
+The next step is to find the distance between consonants. But I haven't actually implemented this yet because consonants are significantly more complex than vowels.
 
 ## Step Three: Distance
 
-For now, let’s pretend that we have a system for measuring vowel-to-vowel distance *and* consonant-to-consonant distance. Now we want to find the distance between two entire words. First we convert them each to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet#:~:text=The%20International%20Phonetic%20Alphabet%20(IPA,for%20the%20sounds%20of%20speech.), using the CMU Pronouncing Dictionary. Now we have two strings of phonemes, that we want to find the distance between.
+For now, let's pretend that we have a system for measuring vowel-to-vowel distance *and* consonant-to-consonant distance. Now we want to find the distance between two entire words. First we convert them each to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet#:~:text=The%20International%20Phonetic%20Alphabet%20(IPA,for%20the%20sounds%20of%20speech.), using the CMU Pronouncing Dictionary. Now we have two strings of phonemes, that we want to find the distance between.
 
-My first thought was to use [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) which is “the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other”. But I wanted to be able to match up vowels-to-vowels and consonants-to-consonants, and, at first glance, Levenshtein distance didn’t seem to offer a means to do this.
+My first thought was to use [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) which is "the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other". But I wanted to be able to match up vowels-to-vowels and consonants-to-consonants, and, at first glance, Levenshtein distance didn't seem to offer a means to do this.
 
-So I went searching. Who has spent a lot of time thinking about ways of calculating distance between “strings” of data? Answer: biologists.
+So I went searching. Who has spent a lot of time thinking about ways of calculating distance between "strings" of data? Answer: biologists.
 
 ### Bioinformatics
 

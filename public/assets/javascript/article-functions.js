@@ -72,12 +72,26 @@ function updateFootnotePositions(footnotes){
     // we have to use this convoluted filter in order to support footnotes within footnotes
     const matchingRef = Array.from(footnoteRefs).filter((ref) => ref.textContent == id)[0];
 
+    // Put footnote under parent-paragaph (TODO we only need to run this once, should be grouped with unlistify())
+    // but only if we haven't already
+    if (!element.closest('.footnote-container')){
+      // first check if we're inside another footnote-container
+      let parentParagraph = matchingRef.closest('.footnote-container');
+      // if not we can match our normal paragraph-ish elements
+      if (!parentParagraph) {
+        parentParagraph = matchingRef.closest('p, li, pre')
+      }
+      element.remove();
+      const footnoteContainer = document.createElement('div');
+      footnoteContainer.classList.add('footnote-container');
+      footnoteContainer.appendChild(element);
+      parentParagraph.insertAdjacentElement("afterend", footnoteContainer);
+    }
+
     // Note this break point is referenced in the CSS as well, so if you change it here, change it there as well.
     const mediaQuery = window.matchMedia('(min-width: 1300px)');
-
     // if wide enough we want it in the margin, at the correct height
     if (mediaQuery.matches) {
-      
       const refTop = matchingRef.getBoundingClientRect().top;
       const innerColumn = element.closest('inner-column');
       const innerColumnTop = innerColumn.getBoundingClientRect().top;
@@ -92,38 +106,18 @@ function updateFootnotePositions(footnotes){
             }
         }
 
-        // if footnotes are guaranteed to be in order, i.e. no footnotes within footnotes, we can use this, otherwise we need to compare each against each like above.
+        // if footnotes are guaranteed to be in order, i.e. no footnotes within footnotes, we can use this, otherwise we need to compare each against each like above, which maybe would get slow if there were a ton of footnotes??
         // const overlap = checkOverlap(footnotes[index - 1], footnotes[index]);
         // if (overlap) {
         //   resolveOverlap(footnotes[index - 1], footnotes[index])
         // }
       }
     }
-
-    // otherwise we want to place the footnote beneath the current paragrph
-    else {
-
-      element.style.top = "";
-      // but only if we haven't already
-      if (!element.closest('.footnote-container')){
-        // first check if we're inside another footnote-container
-        let parentParagraph = matchingRef.closest('.footnote-container');
-        // if we're not, we can select our normal paragraph-ish
-        if (!parentParagraph) {
-          parentParagraph = matchingRef.closest('p, li, pre')
-        }
-        element.remove();
-        const footnoteContainer = document.createElement('div');
-        footnoteContainer.classList.add('footnote-container');
-        footnoteContainer.appendChild(element);
-        parentParagraph.insertAdjacentElement("afterend", footnoteContainer);
-        }
-      
-    }
     
   })
 }
 
+// Moves footnotes from the list that League\CommonMark puts them in, into separate <div>s. So if/when we move them beneath paragraphs, they semantically make sense.
 function unlistifyFootnotes(footnotes){
   const footnotesContainer = document.querySelector('.footnotes');
   footnotes.forEach(element => {
@@ -142,16 +136,21 @@ function unlistifyFootnotes(footnotes){
   return document.querySelectorAll('.footnote');
 }
 
+
+// Give each footnotes a data-index value with their id
 function updateFootnoteNumbers(footnotes){
   footnotes.forEach((element) => {
     element.dataset.index = element.id.slice(3);
   })
 }
-                    
+               
+
 window.onload = () => {
   const footnotes = document.querySelectorAll('.footnote');
+  console.log(footnotes);
   if (footnotes) {
     const divFootnotes = unlistifyFootnotes(footnotes);
+    console.log(divFootnotes);
     updateFootnoteNumbers(divFootnotes);
     updateFootnotePositions(divFootnotes);
 
@@ -162,11 +161,10 @@ window.onload = () => {
 
     document.addEventListener("click", (event) => {
       if (event.target.matches('.footnote-ref')){
-        event.preventDefault();
+        // event.preventDefault();
         event.target.classList.toggle('selected');
         const index = event.target.textContent - 1;
         const footnotes = document.querySelectorAll('.footnote');
-        console.log(footnotes[index]);
         footnotes[index].classList.toggle('selected');
       }
     })

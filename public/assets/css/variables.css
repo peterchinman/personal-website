@@ -50,6 +50,7 @@
 
 	--medium-space: 1.5rem;
 	--big-space: 2.5rem;
+	--huge-space: 5rem;
 
 	--card-padding-inline: 24px;
 
@@ -58,6 +59,7 @@
 	/* GREY-SCALE */
 
 	--ink: 							var(--neutral-1000);
+	--subdued-ink:					var(--neutral-600);
 	--code-bg: 						var(--neutral-0);
 	--footnote-ref-bg: 			var(--neutral-0);
 	--footnote-ref-nested-bg: 	var(--neutral-50);

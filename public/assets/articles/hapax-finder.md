@@ -29,7 +29,7 @@ I'd been studying C++ for a few weeks, and a hapax finder seemed like a project 
 
 I knew I wanted to use a hashmap to store the words and word-counts, for quick access to each word, but I was so new to C++ that I didn't realize the standard library came with it's own hashmap container, `std::unordered_map`. Instead, I implemented my own hashmap, using the MurmurHash2 algorithm to hash each word, and place it in an array of linked-lists. Glad to know I can roll my own hashmap—it might be an important skill in a post-apocalyptic world.
 
-The trickiest part was dealing with punctuation. The algorithm would read in each word until it encountered whitespace, including whatever punctuation clung to the word. So I needed to strip away the punctuation, but I also wanted to include compound words, with an internal dash—e.g. “half-unhinged”. And—one last wrinkle—if the algorithm read in, e.g. “wrinkle—if”, it needed to know that those were two words that it should record separately.
+The trickiest part was dealing with punctuation. The algorithm would read in each word until it encountered whitespace, including whatever punctuation clung to the word. So I needed to strip away the punctuation, but I also wanted to include compound words, with an internal dash—e.g. "half-unhinged". And—one last wrinkle—if the algorithm read in, e.g. "wrinkle—if", it needed to know that those were two words that it should record separately.
 
 Ok, easy enough—I crafted a regular expression to match all the sorts of words I wanted, and then iterated across the matches to catch each separate word. And, voila, it worked! A fully functional command-line hapax finder.
 

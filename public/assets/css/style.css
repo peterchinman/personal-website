@@ -162,10 +162,6 @@ main section:first-child, main article {
 
 .projects-section {
 
-	h1 + ul {
-		margin-top: var(--medium-space)
-	}
-
 	.section-title {
 		background-color: var(--article-card-bg);
 		border-radius: 10px;
@@ -260,6 +256,10 @@ main section:first-child, main article {
 	}
 }
 
+.article-list {
+	padding-top: var(--medium-space);
+}
+
 .blog-listing {
 	h1 + ul {
 		padding-top: var(--big-space);
@@ -286,20 +286,23 @@ main section:first-child, main article {
 			padding-top: .2rem;
 		}
 
-		.tags {
-			font-size: var(--fontSize-neg1);
-			margin-top: 1rem;
-			display: flex;
-			gap: .3em;
-			a {
-				color: var(--neutral-700);
-				background-color: var(--neutral-20);
-				padding-inline: 8px;
-				padding-block: 4px;
-				border-radius: 4px;
-			}
-		}
 		
+		
+	}
+}
+
+.tags {
+	font-size: var(--fontSize-neg1);
+	margin-top: 1rem;
+	display: flex;
+	gap: .3em;
+	a {
+		display: inline;
+		color: var(--neutral-700);
+		background-color: var(--neutral-20);
+		padding-inline: 8px;
+		padding-block: 4px;
+		border-radius: 4px;
 	}
 }
 
@@ -308,6 +311,7 @@ main section:first-child, main article {
 .rc-scout-wrapper {
 	margin-block: var(--medium-space);
 	padding-block: var(--medium-space);
+	margin-top: var(--huge-space);
 	padding-inline: 1rem;
 	background-color: var(--neutral-100);
 

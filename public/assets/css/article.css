@@ -1,3 +1,27 @@
+article, .article-padding {
+	/* ===SPACING=== */
+
+	p + p, .footnote-container + p {
+		padding-top: 1lh;
+	}
+
+	h1:not(:first-child) {
+		padding-top: 1.5lh;
+	}
+
+	h2:not(:first-child), * + h3:not(:first-child) {
+		padding-top: 1.5lh;
+	}
+
+	h1 + p {
+		padding-top: 1lh;
+	}
+
+	h2 + p, h3 + p {
+		padding-top: 1lh;
+	}
+}
+
 article, .reading-section {
 
    position: relative;
@@ -121,28 +145,6 @@ article, .reading-section {
 		font-size: var(--fontSize-1);
 		font-weight: 700;
 		text-transform: uppercase;
-	}
-
-	/* ===SPACING=== */
-
-	p + p, .footnote-container + p {
-		padding-top: 1lh;
-	}
-
-	h1:not(:first-child) {
-		padding-top: 1.5lh;
-	}
-
-	h2:not(:first-child), * + h3:not(:first-child) {
-		padding-top: 1.5lh;
-	}
-
-	h1 + p {
-		padding-top: 1lh;
-	}
-
-	h2 + p, h3 + p {
-		padding-top: 1lh;
 	}
 
 	ul.table-of-contents, .table-of-contents ul {

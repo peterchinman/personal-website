@@ -91,7 +91,7 @@ header{
 				width: var(--input-max-width);
 				border: 2px solid transparent;
 				border-radius: 10px;
-				background-color: white;
+				background-color: var(--bg-2);
 				padding-inline: var(--input-padding-inline);
 				padding-block: var(--input-padding-block);
 				position: relative;

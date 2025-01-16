@@ -20,7 +20,7 @@ a {
 /* put the classic link styles back */
 .body-copy a {
 	display: inline;
-	color: blue;
+	/* color: blue; */
 	text-decoration: underline;
 }
 

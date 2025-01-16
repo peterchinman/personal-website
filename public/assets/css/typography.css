@@ -55,3 +55,9 @@ strong {
 .mono {
 	font-family: var(--mono);
 }
+
+p a, ul:not(.site-nav) > li > a {
+	&:hover, &:active {
+		background-color: var(--accent);
+	}
+}

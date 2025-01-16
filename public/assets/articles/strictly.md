@@ -130,7 +130,7 @@ The next step is to find the distance between consonants. But I haven’t actual
 
 ## Step Three: Distance
 
-Next we want to find the distance between two entire words. First we convert them to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet#:~:text=The%20International%20Phonetic%20Alphabet%20(IPA,for%20the%20sounds%20of%20speech.), using the CMU Pronouncing Dictionary. This gives us two strings of phonemes that we want to find the distance between.
+Next we want to find the distance between two entire words. First we convert them to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet), using the CMU Pronouncing Dictionary. This gives us two strings of phonemes that we want to find the distance between.
 
 My first thought was to use [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) which is “the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other”. But I wanted to be able to match up vowels-to-vowels and consonants-to-consonants, and, at first glance, Levenshtein distance didn’t seem to offer a means to do this.
 

@@ -225,6 +225,7 @@ article, .reading-section {
          }
 
 			pre {
+				background-color: var(--subdued-accent);
 				margin-inline: 0;
 				padding-left: 1rem	;
 				padding-right: 0;
@@ -276,7 +277,7 @@ article, .reading-section {
 	.heading-permalink:hover {
 			
 			text-decoration: none;
-			color: #777;
+			color: var(--subdued-ink);
 	}
 
 

@@ -1,26 +1,34 @@
 // move Table of Contents
 function moveTableOfContents() {
   const article = document.querySelector('article');
-  const TOC = article.querySelector('.table-of-contents');
-  TOC.remove();
-  article.appendChild(TOC);
+  const TOC = document.querySelector('.table-of-contents');
+  if (TOC) {
+    TOC.remove();
+    if (article){
+      article.appendChild(TOC);
+    }
+  }
+  
+  
 }
 
 moveTableOfContents();
+document.addEventListener('htmx:afterSwap', moveTableOfContents)
 
-// how far apart do sidenotes need to be to be considered not overlapping, in pixels
-const overlapGap = 24;
+
 
 function checkOverlap(el1, el2) {
-    const rect1 = el1.getBoundingClientRect();
-    const rect2 = el2.getBoundingClientRect();
-    if(rect1.top === 0 && rect2.top === 0 ){
-      return false;
-    }
-    return !(
-      rect1.bottom + overlapGap <= rect2.top ||
-      rect1.top >= rect2.bottom + overlapGap
-    );
+  // how far apart do sidenotes need to be to be considered not overlapping, in pixels
+  const overlapGap = 24;
+  const rect1 = el1.getBoundingClientRect();
+  const rect2 = el2.getBoundingClientRect();
+  if(rect1.top === 0 && rect2.top === 0 ){
+    return false;
+  }
+  return !(
+    rect1.bottom + overlapGap <= rect2.top ||
+    rect1.top >= rect2.bottom + overlapGap
+  );
 }
 
 function resolveOverlap(el1, el2) {
@@ -94,20 +102,23 @@ function updateFootnotePositions(footnotes){
 // Moves footnotes from the list that League\CommonMark puts them in, into separate <div>s. So if/when we move them beneath paragraphs, they semantically make sense.
 function unlistifyFootnotes(footnotes){
   const footnotesContainer = document.querySelector('.footnotes');
-  footnotes.forEach(element => {
-    const newElement = document.createElement('div');
-    for (const attribute of element.attributes) {
-      newElement.setAttribute(attribute.name, attribute.value);
-    }
-    
-    // Copy the content from the old element to the new one
-    newElement.innerHTML = element.innerHTML;
-    
-    footnotesContainer.appendChild(newElement);
-    element.remove();
-  })
-  footnotesContainer.querySelector('ol').remove();
-  return document.querySelectorAll('.footnote');
+  if (footnotesContainer) {
+    footnotes.forEach(element => {
+      const newElement = document.createElement('div');
+      for (const attribute of element.attributes) {
+        newElement.setAttribute(attribute.name, attribute.value);
+      }
+      
+      // Copy the content from the old element to the new one
+      newElement.innerHTML = element.innerHTML;
+      
+      footnotesContainer.appendChild(newElement);
+      element.remove();
+    })
+    footnotesContainer.querySelector('ol').remove();
+    return document.querySelectorAll('.footnote');
+  }
+  
 }
 
 
@@ -120,8 +131,7 @@ function updateFootnoteNumbers(footnotes){
                
 const runFootnoteCode = (event) => {
   const footnotes = document.querySelectorAll('.footnote');
-  console.log(footnotes);
-  if (footnotes) {
+  if (footnotes.length > 0) {
     const divFootnotes = unlistifyFootnotes(footnotes);
     console.log(divFootnotes);
     updateFootnoteNumbers(divFootnotes);
@@ -149,7 +159,7 @@ const runFootnoteCode = (event) => {
   }
 }
 
-document.addEventListener('htmx:afterRequest', runFootnoteCode);
+document.addEventListener('htmx:afterSwap', runFootnoteCode);
 window.onload = (event) => runFootnoteCode(event);
 
 

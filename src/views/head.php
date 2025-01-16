@@ -23,6 +23,9 @@
 
 	<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
 
+	<script src="<?= BASE_URL ?>assets/javascript/article-functions.js" defer></script>
+	<script src="<?= BASE_URL ?>assets/javascript/orphan-killer.js" defer></script>
+
 
 	<link href="<?= BASE_URL ?>assets/css/style.css" rel="stylesheet">
 

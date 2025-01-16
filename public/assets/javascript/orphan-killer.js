@@ -28,3 +28,4 @@ function insertNonBreakingSpace() {
  }
  
  insertNonBreakingSpace();
+ document.addEventListener('htmx:afterSwap', insertNonBreakingSpace)

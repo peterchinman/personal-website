@@ -61,6 +61,10 @@ article, .reading-section {
 		a {
 			display: inline;
 			text-decoration: underline;
+			
+			&:hover, &:active {
+				background-color: var(--accent);
+			}
 		}
 	}
 
@@ -311,7 +315,7 @@ article, .reading-section {
 			/* display: block; */
          grid-row: 1;
 			grid-column: 1 / span 2;
-         color: var(--neutral-700);
+         color: var(--subdued-ink);
          margin-top: 1rem;
          position: sticky;
          top: 5rem;

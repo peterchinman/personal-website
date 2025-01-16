@@ -74,9 +74,13 @@
    /********************
 	COLOR EXPERIMENTS 
 	*********************/
-	--ink:							#240000;
-	--bg-1: 							#D5D5E2;
-	--bg-2: 							#FAF8FB;
+	--ink:							#240000; /* Deep Red  */
+	--subdued-ink:					#4A0000;
+	--bg-1: 							#D5D5E2; /* Lav       */
+	--bg-2: 							#FAF8FB; /* Paler Lav */
+	--accent:					   #E0F2EF; /* Pale Mint */
+	--subdued-accent:			   #eeeaf6; /* More Lav, but this one splits the two BGs */
+	
 	
 
 	/* light on dark */
@@ -87,7 +91,7 @@
 	--article-card-bg: 			var(--bg-2);
 	--nav-bg: 						transparent;
 
-	--subdued-ink:					#4A0000;
+	
 	--code-bg: 						var(--neutral-0);
 	--footnote-ref-bg: 			var(--neutral-0);
 	--footnote-ref-nested-bg: 	var(--neutral-50);

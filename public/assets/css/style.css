@@ -279,7 +279,7 @@ main section:first-child, main article {
 			}
 
 			&:nth-child(2n-1){
-				background-color: var(--neutral-50);
+				background-color: var(--bg-2);
 			}
 		}
 	}
@@ -304,8 +304,11 @@ main section:first-child, main article {
 	gap: .3em;
 	a {
 		display: inline;
-		color: var(--neutral-700);
-		background-color: var(--neutral-20);
+		color: var(--subdued-ink);
+		&:hover {
+			background-color: var(--accent);
+		}
+		background-color: var(--subdued-accent);
 		padding-inline: 8px;
 		padding-block: 4px;
 		border-radius: 4px;

@@ -128,14 +128,34 @@ function updateFootnoteNumbers(footnotes){
     element.dataset.index = element.id.slice(3);
   })
 }
+
+// Wait for images to load before positioning footnotes
+function waitForImages() {
+  const images = document.querySelectorAll('img');
+  const promises = Array.from(images).map(img => {
+    if (img.complete) return Promise.resolve();
+    return new Promise(resolve => {
+      img.onload = resolve;
+      img.onerror = resolve; // Handle broken images too
+    });
+  });
+  return Promise.all(promises);
+}
                
-const runFootnoteCode = (event) => {
+const runFootnoteCode = async (event) => {
   const footnotes = document.querySelectorAll('.footnote');
   if (footnotes.length === 0) return;
 
   const divFootnotes = unlistifyFootnotes(footnotes);
   updateFootnoteNumbers(divFootnotes);
-  updateFootnotePositions(divFootnotes);
+  
+  // Wait for images first
+  await waitForImages();
+  
+  // Add a small delay to let the browser finish layout calculations
+  setTimeout(() => {
+    updateFootnotePositions(divFootnotes);
+  }, 50);
 }
 
 // Debounced resize handler
@@ -183,8 +203,15 @@ function setupEventListeners() {
 document.addEventListener('htmx:afterSettle', () => {
   setupEventListeners();
   runFootnoteCode();
+  
+  // Add a backup position update after a longer delay
+  setTimeout(() => {
+    const footnotes = document.querySelectorAll('.footnote');
+    if (footnotes.length > 0) {
+      updateFootnotePositions(footnotes);
+    }
+  }, 500);
 });
-
 window.addEventListener('load', () => {
   setupEventListeners();
   runFootnoteCode();

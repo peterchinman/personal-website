@@ -131,36 +131,63 @@ function updateFootnoteNumbers(footnotes){
                
 const runFootnoteCode = (event) => {
   const footnotes = document.querySelectorAll('.footnote');
-  if (footnotes.length > 0) {
-    const divFootnotes = unlistifyFootnotes(footnotes);
-    console.log(divFootnotes);
-    updateFootnoteNumbers(divFootnotes);
-    updateFootnotePositions(divFootnotes);
+  if (footnotes.length === 0) return;
 
-    window.addEventListener('resize', function(event) {
-      const footnotes = document.querySelectorAll('.footnote');
-      updateFootnotePositions(footnotes);
-    });
-
-    document.addEventListener("click", (event) => {
-      if (event.target.matches('.footnote-ref')){
-        event.preventDefault();
-        event.target.classList.toggle('selected');
-        const index = event.target.textContent;
-        const footnotes = Array.from(document.querySelectorAll('.footnote'));
-        footnotes.filter((element) => {
-          return element.id.slice(3) === index
-        }).forEach((element) => {
-          element.classList.toggle('selected');
-        });
-        // footnotes[index].classList.toggle('selected');
-      }
-    })
-  }
+  const divFootnotes = unlistifyFootnotes(footnotes);
+  updateFootnoteNumbers(divFootnotes);
+  updateFootnotePositions(divFootnotes);
 }
 
-document.addEventListener('htmx:afterSettle', runFootnoteCode);
-window.onload = (event) => runFootnoteCode(event);
+// Debounced resize handler
+const debouncedUpdatePositions = debounce(() => {
+  const footnotes = document.querySelectorAll('.footnote');
+  updateFootnotePositions(footnotes);
+}, 150);
 
+// Single click handler at document level
+const handleFootnoteClick = (event) => {
+  if (!event.target.matches('.footnote-ref')) return;
+  
+  event.preventDefault();
+  event.target.classList.toggle('selected');
+  const index = event.target.textContent;
+  
+  const footnotes = Array.from(document.querySelectorAll('.footnote'));
+  footnotes.filter(element => element.id.slice(3) === index)
+          .forEach(element => element.classList.toggle('selected'));
+};
+
+// Simple debounce function
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Remove old listeners before adding new ones
+function setupEventListeners() {
+  window.removeEventListener('resize', debouncedUpdatePositions);
+  document.removeEventListener('click', handleFootnoteClick);
+  
+  window.addEventListener('resize', debouncedUpdatePositions);
+  document.removeEventListener('click', handleFootnoteClick);
+}
+
+// Setup on HTMX loads and initial page load
+document.addEventListener('htmx:afterSettle', () => {
+  setupEventListeners();
+  runFootnoteCode();
+});
+
+window.addEventListener('load', () => {
+  setupEventListeners();
+  runFootnoteCode();
+});
 
 

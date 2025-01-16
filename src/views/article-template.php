@@ -7,9 +7,12 @@
 
    <?php if(file_exists(__DIR__ . "/../../public/assets/articles/screenshots/" . $frontMatter["slug"] . ".png")): ?>
 
-   <a href="<?= $frontMatter["site"]?>">
+   <a href="<?= $frontMatter["site"]?>" target="_blank">
       <picture>
-         <img src="<?= BASE_URL . "assets/articles/screenshots/" . $frontMatter["slug"] ?>.png" alt="A screenshot of the interface of <?= $frontMatter["title"] ?>">
+         <img
+            src="<?= BASE_URL . "assets/articles/screenshots/" . $frontMatter["slug"] ?>.png"
+            alt="A screenshot of the interface of <?= $frontMatter["title"] ?>"
+         >
       </picture>
 </a>
    

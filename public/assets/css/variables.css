@@ -91,17 +91,17 @@
 	--article-card-bg: 			var(--bg-2);
 	--nav-bg: 						transparent;
 
-	
-	--code-bg: 						var(--neutral-0);
-	--footnote-ref-bg: 			var(--neutral-0);
-	--footnote-ref-nested-bg: 	var(--neutral-50);
-	--footnote-bg: 				var(--neutral-0);
+	--code-text:					var(--ink);
+	--code-bg: 						var(--bg-1);
+	--footnote-ref-bg: 			var(--subdued-accent);
+	--footnote-ref-nested-bg: 	var(--subdued-accent);
+	--footnote-bg: 				var(--bg-1);
 
 
 	--bg-transition-speed: 		1s ease-in-out;
 
 	/* article reading bg */
-	&:has(.post) {
+	&:has(article) {
 		--body-bg:						#FAF8FB;
 		--header-bg: 					#D5D5E2;			
 		--article-card-bg: 			#D5D5E2;

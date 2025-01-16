@@ -12,11 +12,11 @@ coolness: 10
 published: 2024-12-30
 ---
 
-The seed for this project was a vision of a platform for users to collaborate on poems in strictly defined meters. I was thinking of [*renga*](https://en.wikipedia.org/wiki/Renga), a collaborative poetry form from Japan.[^1] I was also imagining the absurdity of a "social media" platform that would require users to post in, e.g., rhyming couplets. 
+The seed for this project was a vision of a platform for users to collaborate on poems in strictly defined meters. I was thinking of [*renga*](https://en.wikipedia.org/wiki/Renga), a Japanese collaborative poetry form.[^1] I was also imagining the absurdity of a "social media" platform that would require users to post in, e.g., rhyming couplets. 
 
 [^1]: *Renga* would give birth to the much better known *haiku* when the renga's starting stanza, the [*hokku*](https://en.wikipedia.org/wiki/Hokku "Hokku"), was severed from the rest of the poem.
 
-This, is the fulfillment of the first stage of that vision—an online rhyme and meter checker. I wanted it to be a tool that embraced how poets actually treat the restrictions of poetic form—not as divine laws that must be precisely followed, but as a muscular architecture that can be tensed and relaxed at will. That is, I wanted it be capable of looseness. Embracing deviations.
+This is the fulfillment of the first stage of that vision: an online rhyme and meter checker. I wanted it to be a tool that embraced how poets actually treat the restrictions of poetic form—not as divine laws that must be precisely followed, but as a musculo-skeletal architecture that can be tensed and relaxed at will. That is, I wanted it be capable of looseness. To embrace deviations.
 
 [Check it out here](https://peterchinman.github.io/strictly/).
 
@@ -56,7 +56,7 @@ I wanted a system for measuring distance that was based in adjacency. Thus was b
 
 ### Vowel Hex Graph
 
-The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagonal grid, as if that was how they were always meant to be arranged.[^5] It is a perfect abstraction, whose beauty seems to be evidence of its truth. Distance could be measure by counting how many hexagonal tiles you would have to move to get from one vowel to another. Life would be lovely and everything would make perfect sense. Until, that is, one remembered the diphthong problem.
+The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagonal grid, as if that was how they were always meant to be arranged.[^5] It is a perfect abstraction, whose beauty seems to be evidence of its truth. Distance could thus be measured by means of counting the number of tiles borders one would have to cross to get from one vowel to another. Life would be lovely and everything would make perfect sense. Until, that is, one remembered the diphthong problem.
 
 [^5]: The idea appeared to me in a dream.
 
@@ -82,15 +82,29 @@ The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagon
 
 ### The Diphthong Problem
 
-![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](the-dipthong-problem.png)
+![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](/assets/articles/images/the-diphthong-problem.png)
 
-Some vowels are not just points in vowel space. What we call "diphthongs" are a movement between two points in vowel space. For example, the vowel in "boy"—if you slow down your pronunciation you can hear the sound moving from a vowel near "oh" to a vowel near "ee".
+Some vowels are not just points in vowel space. What we call *diphthongs* are a movement between two points in vowel space. For example, the vowel in "boy"—if you slow down your pronunciation you can hear the sound of "oy" moving from a vowel near "oh" to a vowel near "ee".
 
 This raises the thorny problem of what exactly we mean by “the distance between” a single-point vowel (called a monophthong) and a diphthong. Do we measure from the starting point of the diphthong? The ending point? From the closest point to the vowel we're measuring it against? 
 
-Or should we not treat a diphthong as *a* vowel at all, but as in fact two separate vowels? This seems attractively rigorous, but I’m not sure it tracks with how we typically conceive of vowels in English? Maybe I’ll try this method out at some point and compare the results. 
+Or should we not treat a diphthong as *a* vowel at all, but as in fact two separate vowels? This seems attractively rigorous, but it doesn't seem to track with how English-speakers typically conceive of vowels?
 
-What I did instead is that I sat down, pronouncing the vowel sounds to myself, building on top of the beautiful abstract edifice of the Vowel Hex Graph, an arbitrary / idiosyncratic maze of adjacencies.
+What I did instead is that I sat down, muttering the vowel sounds to myself, and constructing on top of the perfect abstract edifice of the Vowel Hex Graph, an arbitrary / idiosyncratic maze of adjacencies.
+
+```
+1. AW as in BOUT is adjacent to:
+   UH as in BUSH
+   OW as in BOAT
+   AH as in BUT
+
+2. AY as in BITE is adjacent to:
+   IH as in BIT 
+   EY as in BAIT
+   AH as in BUT
+```
+
+Etc. etc. for all five major English diphthongs. 
 
 ### Vowel Distance
 
@@ -100,15 +114,27 @@ This was my first graph algorithm, very cool.
 
 ## Step Two: Consonants
 
-The next step is to find the distance between consonants. But I haven’t actually implemented this yet because consonants are significantly more complex than vowels.
+The next step is to find the distance between consonants. But I haven’t actually implemented this yet because consonants are significantly more complex than vowels.[^6]
+
+[^6]: Vowels can be mapped fairly accurately to a two-dimensional space, but consonants are *at least* three-dimensional:
+
+	> 1. Where the constriction is made in the mouth (e.g., at the lips, against the roof of the mouth, etc.)
+	> 2. How much the flow of air is constricted (e.g., a complete blockage of the flow of air, as in _p_, or only a partial blockage, as in _s_)
+	> 3. Whether or not the sound involves "voicing"
+	>
+	>[source](https://people.umass.edu/neb/ArticPhonetics.html#:~:text=Among%20consonants%20we%20will%20rely,in%20s\)%2C%20and%203)
+
+	(And notice that that first dimension is not obviously a simple one-dimensional axis.)
+
+	Additionally, vowel-space is continuous but consonant-space is *discrete*. You can not move smoothly between consonants. 
 
 ## Step Three: Distance
 
-For now, let’s pretend that we have a system for measuring vowel-to-vowel distance *and* consonant-to-consonant distance. Now we want to find the distance between two entire words. First we convert them each to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet#:~:text=The%20International%20Phonetic%20Alphabet%20(IPA,for%20the%20sounds%20of%20speech.), using the CMU Pronouncing Dictionary. Now we have two strings of phonemes, that we want to find the distance between.
+Next we want to find the distance between two entire words. First we convert them to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet#:~:text=The%20International%20Phonetic%20Alphabet%20(IPA,for%20the%20sounds%20of%20speech.), using the CMU Pronouncing Dictionary. This gives us two strings of phonemes that we want to find the distance between.
 
 My first thought was to use [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) which is “the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other”. But I wanted to be able to match up vowels-to-vowels and consonants-to-consonants, and, at first glance, Levenshtein distance didn’t seem to offer a means to do this.
 
-So I went searching. Who has spent a lot of time thinking about ways of calculating distance between “strings” of data? Answer: biologists.
+So I went searching. Who has spent a lot of time thinking about ways of calculating distance between strings? Answer: biologists.
 
 ### Bioinformatics
 

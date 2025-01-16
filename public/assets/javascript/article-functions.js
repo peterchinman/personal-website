@@ -86,7 +86,13 @@ function updateFootnotePositions(footnotes){
       const footnoteContainer = document.createElement('div');
       footnoteContainer.classList.add('footnote-container');
       footnoteContainer.appendChild(element);
-      parentParagraph.insertAdjacentElement("afterend", footnoteContainer);
+
+      // if parent paragraph has a .footnote-containers after it, we want to place after those
+      let afterMe = parentParagraph;
+      while(afterMe.nextElementSibling.classList.contains("footnote-container") ) {
+        afterMe = afterMe.nextElementSibling;
+      } 
+      afterMe.insertAdjacentElement("afterend", footnoteContainer);
     }
 
     // Note this break point is referenced in the CSS as well, so if you change it here, change it there as well.
@@ -164,9 +170,14 @@ window.onload = () => {
       if (event.target.matches('.footnote-ref')){
         event.preventDefault();
         event.target.classList.toggle('selected');
-        const index = event.target.textContent - 1;
-        const footnotes = document.querySelectorAll('.footnote');
-        footnotes[index].classList.toggle('selected');
+        const index = event.target.textContent;
+        const footnotes = Array.from(document.querySelectorAll('.footnote'));
+        footnotes.filter((element) => {
+          return element.id.slice(3) === index
+        }).forEach((element) => {
+          element.classList.toggle('selected');
+        });
+        // footnotes[index].classList.toggle('selected');
       }
     })
   }

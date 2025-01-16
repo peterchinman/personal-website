@@ -1,7 +1,3 @@
-
-
-
-
 // move Table of Contents
 function moveTableOfContents() {
   const article = document.querySelector('article');
@@ -122,8 +118,7 @@ function updateFootnoteNumbers(footnotes){
   })
 }
                
-
-window.onload = () => {
+const runFootnoteCode = (event) => {
   const footnotes = document.querySelectorAll('.footnote');
   console.log(footnotes);
   if (footnotes) {
@@ -152,8 +147,11 @@ window.onload = () => {
       }
     })
   }
-  
-};
+}
+
+// window.onload = () => {
+document.addEventListener('htmx:afterRequest', runFootnoteCode);
+document.addEventListener('DOMContentLoaded', runFootnoteCode);
 
 
 

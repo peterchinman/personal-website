@@ -25,4 +25,5 @@
 </article>
 </main>
 
-<script src="<?= BASE_URL ?>assets/javascript/article-functions.js"></script>
+
+

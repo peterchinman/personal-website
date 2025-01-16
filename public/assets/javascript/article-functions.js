@@ -149,9 +149,8 @@ const runFootnoteCode = (event) => {
   }
 }
 
-// window.onload = () => {
 document.addEventListener('htmx:afterRequest', runFootnoteCode);
-document.addEventListener('DOMContentLoaded', runFootnoteCode);
+window.onload = (event) => runFootnoteCode(event);
 
 
 

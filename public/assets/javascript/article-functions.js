@@ -196,7 +196,7 @@ function setupEventListeners() {
   document.removeEventListener('click', handleFootnoteClick);
   
   window.addEventListener('resize', debouncedUpdatePositions);
-  document.removeEventListener('click', handleFootnoteClick);
+  document.addEventListener('click', handleFootnoteClick);
 }
 
 // Setup on HTMX loads and initial page load

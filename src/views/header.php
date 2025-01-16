@@ -4,7 +4,7 @@ include __DIR__ . '/head.php';
 
 ?>
 
-<body class="<?= $source ?? '' ?>">
+<body class="<?= $source ?? '' ?>" hx-boost="true">
    <header>
 
       <div class="name-section">

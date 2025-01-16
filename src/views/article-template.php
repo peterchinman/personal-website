@@ -1,5 +1,5 @@
 <main>
-<article class="project-content">
+<article class="post">
 <inner-column>
    <div class="blog-title"><?= $frontMatter["title"] ?></div>
 

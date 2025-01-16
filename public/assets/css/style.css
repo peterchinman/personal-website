@@ -12,6 +12,7 @@
 body {
 	font-family: var(--heading);
 	background-color: var(--body-bg);
+	transition: background-color var(--bg-transition-speed);
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -30,14 +31,19 @@ inner-column{
  
 header{
 	background-color: var(--header-bg);
+	transition: background-color var(--bg-transition-speed);
 	padding-top: var(--big-space);
 	padding-bottom: var(--medium-space);
 
-	.name-section inner-column {
+	.name-section {
+		background: var(--header-name-section-bg);
+
+		inner-column {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
 		column-gap: 1em;
+		}
 
 	}
 
@@ -45,7 +51,7 @@ header{
 		padding-bottom: 1rem;
 	}
 
-	.disambiguation {
+	/* .disambiguation {
 
 		--input-padding-inline: .4em;
 		--input-padding-block: .4em;
@@ -129,9 +135,10 @@ header{
 				}
 			}
 		}
-	}
+	} */
 
 	nav {
+		background-color: var(--nav-bg);
 		.site-nav {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;

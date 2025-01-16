@@ -13,7 +13,7 @@ function moveTableOfContents() {
 }
 
 moveTableOfContents();
-document.addEventListener('htmx:afterSwap', moveTableOfContents)
+document.addEventListener('htmx:afterSettle', moveTableOfContents)
 
 
 
@@ -159,7 +159,7 @@ const runFootnoteCode = (event) => {
   }
 }
 
-document.addEventListener('htmx:afterSwap', runFootnoteCode);
+document.addEventListener('htmx:afterSettle', runFootnoteCode);
 window.onload = (event) => runFootnoteCode(event);
 
 

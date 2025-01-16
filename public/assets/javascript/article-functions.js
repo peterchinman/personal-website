@@ -1,15 +1,15 @@
 // move Table of Contents
 function moveTableOfContents() {
-  const article = document.querySelector('article');
-  const TOC = document.querySelector('.table-of-contents');
-  if (TOC) {
-    TOC.remove();
-    if (article){
-      article.appendChild(TOC);
+  setTimeout(() => {
+    const article = document.querySelector('article');
+    const TOC = document.querySelector('.table-of-contents');
+    if (TOC) {
+      TOC.remove();
+      if (article) {
+        article.appendChild(TOC);
+      }
     }
-  }
-  
-  
+  }, 50);
 }
 
 moveTableOfContents();
@@ -64,7 +64,7 @@ function updateFootnotePositions(footnotes){
 
       // if parent paragraph has a .footnote-containers after it, we want to place after those
       let afterMe = parentParagraph;
-      while(afterMe.nextElementSibling.classList.contains("footnote-container") ) {
+      while(afterMe.nextElementSibling?.classList.contains("footnote-container") ) {
         afterMe = afterMe.nextSibling;
       } 
       afterMe.insertAdjacentElement("afterend", footnoteContainer);

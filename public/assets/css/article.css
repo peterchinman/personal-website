@@ -346,6 +346,7 @@ article, .reading-section {
          background-color: unset;
 
          .footnote {
+
             --sn-margin-left: 7vw;
             --sn-margin-right: 0rem;
             --sn-max-width: 70ch;

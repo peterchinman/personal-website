@@ -19,15 +19,15 @@ document.addEventListener('htmx:afterSettle', moveTableOfContents)
 
 function checkOverlap(el1, el2) {
   // how far apart do sidenotes need to be to be considered not overlapping, in pixels
-  const overlapGap = 24;
+  const OVERLAP_GAP = 24;
   const rect1 = el1.getBoundingClientRect();
   const rect2 = el2.getBoundingClientRect();
   if(rect1.top === 0 && rect2.top === 0 ){
     return false;
   }
   return !(
-    rect1.bottom + overlapGap <= rect2.top ||
-    rect1.top >= rect2.bottom + overlapGap
+    rect1.bottom + OVERLAP_GAP <= rect2.top ||
+    rect1.top >= rect2.bottom + OVERLAP_GAP
   );
 }
 

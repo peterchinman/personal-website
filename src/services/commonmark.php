@@ -15,7 +15,7 @@ use League\CommonMark\Extension\Footnote\FootnoteExtension;
 $config = [
       'footnote' => [
          'backref_class'      => 'footnote-backref',
-         'backref_symbol'     => '↩',
+         'backref_symbol'     => '',
          'container_add_hr'   => false,
          'container_class'    => 'footnotes',
          'ref_class'          => 'footnote-ref',

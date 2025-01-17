@@ -98,7 +98,7 @@
 	--footnote-bg: 				var(--bg-1);
 
 
-	--bg-transition-speed: 		1s ease-in-out;
+	--bg-transition-speed: 		2s ease-in-out;
 
 	/* article reading bg */
 	&:has(article) {

@@ -17,8 +17,12 @@
    <?php if(in_array("project", $article["tags"])): ?>
    <ul class="link-list">
       <li><a href="/blog/<?= $article["slug"] ?>" class="read-me">read me</a></li>
-      <li><a href="<?= $article["site"] ?>" class="site">site</a></li>
-      <li><a href="<?= $article["code"] ?>">code</a></li>
+      <?php if (!empty($article["site"])): ?>
+         <li><a href="<?= $article["site"] ?>" class="site">site</a></li>
+      <?php endif; ?>
+      <?php if (!empty($article["code"])): ?>
+         <li><a href="<?= $article["code"] ?>">code</a></li>
+      <?php endif; ?>
    </ul>
    <?php endif; ?>
 </project-card>

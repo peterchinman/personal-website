@@ -3,7 +3,7 @@
       <inner-column>
          <!-- directives:[] -->
          <div id="content"><h1 id="hello">Hello</h1>
-         <p>I'm a 34 year-old <a href="https://www.theparkpoet.com/" target="_blank">poet</a>, <a href="https://holymold.com/" target="_blank">sculptor</a>, and coder based in NYC.</p>
+         <p>I'm a <a href="https://www.theparkpoet.com/" target="_blank">poet</a>, <a href="https://holymold.com/" target="_blank">sculptor</a>, and coder based in NYC.</p>
          <p>In Fall 2024 I attended <a href="https://www.recurse.com/" target="_blank">Recurse Center</a>, a twelve-week programming retreat. While I was there I made a C++ library for manipulating phonemes, which I used to build <a href="/blog?tag=language">a variety of language projects</a>.</p>
          <p>I like building for the web. I think WASM is exciting. I like designing interfaces. I think Figma is a beautiful tool. I feel as at home in C++ as I do in CSS. I'm interested in texture.</p>
          <p><strong>I am currently seeking work.</strong>  <a href="mailto:peter.chinman@gmail.com" target="_blank">Reach out</a> if you'd like to hire me to build something for you.</p>

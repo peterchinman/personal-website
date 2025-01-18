@@ -184,6 +184,18 @@ main section:first-child, main article {
 		background-color: var(--article-card-bg);
 		border-radius: 10px;
 		padding-block: 28px;
+
+		filter: grayscale(1);
+		img {
+			opacity: .7;
+			transition: opacity .7s;
+		}
+		transition: filter 1s;
+
+		&:hover {
+			filter: grayscale(0);
+			img {opacity: 1;}
+		}
 		
 	
 		.title {

@@ -23,6 +23,11 @@
 
 	<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
 
+	<!-- start HIGHLIGHT.JS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	<!-- end HIGHLIGHT.JS -->
+
 	<script src="<?= BASE_URL ?>assets/javascript/article-functions.js" defer></script>
 	<script src="<?= BASE_URL ?>assets/javascript/orphan-killer.js" defer></script>
 

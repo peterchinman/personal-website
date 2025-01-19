@@ -52,8 +52,14 @@ strong {
 	font-weight: 600;
 }
 
-.mono {
+.mono, code {
 	font-family: var(--mono);
+}
+
+:not(pre) > code {
+	background-color: var(--subdued-accent);
+	border-radius: 4px;
+	padding-inline: 2px;
 }
 
 p a, ul:not(.site-nav) > li > a {

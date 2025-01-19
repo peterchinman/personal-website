@@ -1,3 +1,5 @@
+
+
 // move Table of Contents
 function moveTableOfContents() {
   setTimeout(() => {
@@ -200,7 +202,9 @@ function setupEventListeners() {
 }
 
 // Setup on HTMX loads and initial page load
+// We also add code highlighting here
 document.addEventListener('htmx:afterSettle', () => {
+  hljs.highlightAll();
   setupEventListeners();
   runFootnoteCode();
   
@@ -213,6 +217,7 @@ document.addEventListener('htmx:afterSettle', () => {
   }, 500);
 });
 window.addEventListener('load', () => {
+  hljs.highlightAll();
   setupEventListeners();
   runFootnoteCode();
 });

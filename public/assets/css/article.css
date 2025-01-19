@@ -20,6 +20,12 @@ article, .article-padding {
 	h2 + p, h3 + p {
 		padding-top: 1lh;
 	}
+
+	/* if no image and subtitle */
+
+	.blog-title + p, .blog-subtitle + p {
+		padding-top: 2lh;
+	}
 }
 
 article, .reading-section {
@@ -114,6 +120,12 @@ article, .reading-section {
 		padding-block: 1lh;
 		background-color: var(--code-bg);
 		color: var(--code-text);
+
+		.hljs{
+			background-color: inherit;
+			padding: 0;
+			color: var(--ink);
+		}
 	}
 
 	blockquote {
@@ -128,6 +140,8 @@ article, .reading-section {
 		font-size: var(--fontSize-3);
 		font-weight: 500;
 	}
+
+	
 
 	.blog-subtitle {
 		font-size: var(--fontSize-neg1);

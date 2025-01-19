@@ -16,4 +16,8 @@ The [CMU Pronouncing Dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict#a
 
 It's the go-to dataset for pronunciations in English. There's various tooling that uses it, e.g. [this Python library](https://github.com/aparrish/pronouncingpy). But I was working in C++, building WebAssembly projects, and by the third time I was copy-pasting this code into a new project I decided it was time to make this into a small, self-complete library.
 
-It's a small simple library, that can easily be used in other project in which you need access to the pronunciations of English words.
+It's a simple library, that can easily be used in other project in which you need access to the pronunciations of English words.
+
+I use it in:
+- [Strictly](https://peterchinman.com/blog/strictly)
+- [Lighght](https://peterchinman.com/blog/lighght)

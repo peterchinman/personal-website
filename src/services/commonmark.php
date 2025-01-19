@@ -8,6 +8,8 @@ use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkRenderer;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use League\CommonMark\Extension\Footnote\FootnoteExtension;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
+
 
 
 
@@ -45,17 +47,29 @@ $config = [
          'normalize' => 'relative',
          'placeholder' => null,
      ],
+     'external_link' => [
+        'internal_hosts' => ['www.peterchinman.com', 'peterchinman.com'], // TODO: Don't forget to set this!
+        'open_in_new_window' => true,
+        'html_class' => 'external-link',
+        'nofollow' => '',
+        'noopener' => 'external',
+        'noreferrer' => 'external',
+    ],
      
 
    ];
 
    $environment = new Environment($config);
    $environment->addExtension(new CommonMarkCoreExtension());
+
    // add extensions
    $environment->addExtension(new FootnoteExtension());
    $environment->addExtension(new HeadingPermalinkExtension());
    $environment->addExtension(new TableOfContentsExtension());
    $environment->addExtension(new FrontMatterExtension());
+   $environment->addExtension(new ExternalLinkExtension());
+
+
 
 
 

@@ -11,9 +11,9 @@ published: 2025-01-19
 
 I was making a [Silent Letter Detector](https://peterchinman.com/blog/lighght) that had a text field where users could write text that would be checked, live, for silent letters, which would be marked with `<span>`s. Similar to a spell-checker squiggly-underlining mispelled words.
 
-You can’t use `<textarea>` in this case because `<textarea>` can’t contain spans. Instead I used the `contenteditable='true'` attribute, which was new to me.
+You can't use `<textarea>` in this case because `<textarea>` can't contain spans. Instead I used the `contenteditable='true'` attribute, which was new to me.
 
-The first problem I ran into is that, because I’m reading the text from my `textfield`, processing it, and then replacing the `textfield` with the marked-up text, I need to handle the text caret placement myself, or else it gets reset to the beginning of the `textfield`. This is done using the `Selection` and `Range` interfaces. You need to 1) get the caret position from the `textfield`, process the text, and then 2) set the caret position to put it back where it should be.
+The first problem I ran into is that, because I'm reading the text from my `textfield`, processing it, and then replacing the `textfield` with the marked-up text, I need to handle the text caret placement myself, or else it gets reset to the beginning of the `textfield`. This is done using the `Selection` and `Range` interfaces. You need to 1) get the caret position from the `textfield`, process the text, and then 2) set the caret position to put it back where it should be.
 
 # Get the Caret Position
 
@@ -78,4 +78,4 @@ function setCaretPosition(position) {
 }
 ```
 
-It works!
+

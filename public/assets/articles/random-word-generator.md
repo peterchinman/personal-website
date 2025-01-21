@@ -13,7 +13,7 @@ published: 2024-01-10
 updated:
 ---
 
-For years I've loved Random Word Generators. I’ve used them as a sporadic part of my writing practice: when I'd sit down to write, long-hand in my journal, I’d generate a list of random words and any time I felt the line start to slacken, I’d reach for one of the words to incorporate, to break me free of myself. And I could tell when the writing was going really well, because the random words would start to feel more and more related, perfectly chosen, fated.
+For years I've loved Random Word Generators. I've used them as a sporadic part of my writing practice: when I'd sit down to write, long-hand in my journal, I'd generate a list of random words and any time I felt the line start to slacken, I'd reach for one of the words to incorporate, to break me free of myself. And I could tell when the writing was going really well, because the random words would start to feel more and more related, perfectly chosen, fated.
 
 Unfortunately all of the Random Word Generators online are ugly. [So I made my own](https://randomwordgenerator.info/).
 
@@ -35,9 +35,9 @@ Whereas now, in my day to day life, I rarely come across an unfamiliar word. I e
 
 The first task was to find a dictionary to use.
 
-There is of course [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page), but it’s unwieldy, several gigabytes large, and I'd read that it’s difficult to work with. Further research led me to [Wordset](https://github.com/wordset/wordset-dictionary), an open-source collaborative dictionary that was active from 2015-2017. It's now defunct as a project, but you can still download it, and it's fairly large (~177k words), and the data is well-structured.
+There is of course [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page), but it's unwieldy, several gigabytes large, and I'd read that it's difficult to work with. Further research led me to [Wordset](https://github.com/wordset/wordset-dictionary), an open-source collaborative dictionary that was active from 2015-2017. It's now defunct as a project, but you can still download it, and it's fairly large (~177k words), and the data is well-structured.
 
-Once I’d settled on Wordset, I converted it from separate JSON files into one large relational database that I could query. Which was much more involved than that sentence suggests, because, at the time, the only programming language I really knew was C++, and I was so new to it that I had not yet worked with any external libraries.
+Once I'd settled on Wordset, I converted it from separate JSON files into one large relational database that I could query. Which was much more involved than that sentence suggests, because, at the time, the only programming language I really knew was C++, and I was so new to it that I had not yet worked with any external libraries.
 
 I had to learn:
 
@@ -96,7 +96,7 @@ But: not all of the same elements were mapped to the same colors when you switch
 
 # How Random
 
-I wasn’t sure about this, but had I suspected that the available Random Word Generators online were using a fairly limited dictionary. They rarely generated words I was unfamiliar with. Whereas, using the Wordset dictionary, but Random Word Generator seemed particularly, *random*.
+I wasn't sure about this, but had I suspected that the available Random Word Generators online were using a fairly limited dictionary. They rarely generated words I was unfamiliar with. Whereas, using the Wordset dictionary, but Random Word Generator seemed particularly, *random*.
 
 To compare I sampled 40 random words each of the following dictionaries and record the words I didn't recognize:
 

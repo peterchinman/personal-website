@@ -50,7 +50,7 @@ Vowels can be mapped into a 2-D space, where the axes are the first and second f
 
 [^3]: Source 1: https://linc2018.wordpress.com/wp-content/uploads/2018/06/a-practical-lntroduction-to-phonetics.pdf p. 154. 
 
-[^4]: One reason for the discrepancy in the distances is that they are moving along different axes from “bat”—"bet" along the F1 axis, and "bot" along the F2 axis. We could try to correct for this discrepancy by scaling the axes. But it’s not obvious that this give us what we actually wanted—or if it would be an quantitative kludge standing in for a lack of metaphysical foundation. 
+[^4]: One reason for the discrepancy in the distances is that they are moving along different axes from "bat"—"bet" along the F1 axis, and "bot" along the F2 axis. We could try to correct for this discrepancy by scaling the axes. But it's not obvious that this give us what we actually wanted—or if it would be an quantitative kludge standing in for a lack of metaphysical foundation. 
 
 I wanted a system for measuring distance that was based in adjacency. Thus was born the Vowel Hex Graph.
 
@@ -82,11 +82,11 @@ The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagon
 
 ### The Diphthong Problem
 
-![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](/assets/articles/images/the-diphthong-problem.png)
+![The Vowel Hex Graph with arrows indicating english dipthongs, disturbing the eternal tranquillity of the hexagons](/assets/articles/imagesthe-diphthong-problem.png)
 
 Some vowels are not just points in vowel space. What we call *diphthongs* are a movement between two points in vowel space. For example, the vowel in "boy"—if you slow down your pronunciation you can hear the sound of "oy" moving from a vowel near "oh" to a vowel near "ee".
 
-This raises the thorny problem of what exactly we mean by “the distance between” a single-point vowel (called a monophthong) and a diphthong. Do we measure from the starting point of the diphthong? The ending point? From the closest point to the vowel we're measuring it against? 
+This raises the thorny problem of what exactly we mean by "the distance between" a single-point vowel (called a monophthong) and a diphthong. Do we measure from the starting point of the diphthong? The ending point? From the closest point to the vowel we're measuring it against? 
 
 Or should we not treat a diphthong as *a* vowel at all, but as in fact two separate vowels? This seems attractively rigorous, but it doesn't seem to track with how English-speakers typically conceive of vowels?
 
@@ -114,28 +114,34 @@ This was my first graph algorithm, very cool.
 
 ## Step Two: Consonants
 
-The next step is to find the distance between consonants. But I haven’t actually implemented this yet because consonants are significantly more complex than vowels.[^6]
+The next step is to find the distance between consonants. One thing to note is that, unlike vowels, consonants are discrete: you can not move smoothly from one to another. Consonants can be classified according to these three dimensions:
 
-[^6]: Vowels can be mapped fairly accurately to a two-dimensional space, but consonants are *at least* three-dimensional:
+> 1. Where the constriction is made in the mouth (e.g., at the lips, against the roof of the mouth, etc.)
+> 2. How much the flow of air is constricted (e.g., a complete blockage of the flow of air, as in _p_, or only a partial blockage, as in _s_)
+> 3. Whether or not the sound involves "voicing"
+>
+>[source](https://people.umass.edu/neb/ArticPhonetics.html#:~:text=Among%20consonants%20we%20will%20rely,in%20s\)%2C%20and%203)
 
-	> 1. Where the constriction is made in the mouth (e.g., at the lips, against the roof of the mouth, etc.)
-	> 2. How much the flow of air is constricted (e.g., a complete blockage of the flow of air, as in _p_, or only a partial blockage, as in _s_)
-	> 3. Whether or not the sound involves "voicing"
-	>
-	>[source](https://people.umass.edu/neb/ArticPhonetics.html#:~:text=Among%20consonants%20we%20will%20rely,in%20s\)%2C%20and%203)
+These are referred to as 1) place of articulation, 2) manner of articulation, and 3) phonation. I referred to [this chart](https://en.wikipedia.org/wiki/Pulmonic_consonant#Chart), which organizes all of the IPA pulmonic consonants according to these three dimension. I made a new version of it, containing only the consonants used in the CMU dictionary. And then I spent some time thinking through the relationships I observed.
 
-	(And notice that that first dimension is not obviously a simple one-dimensional axis.)
+## Observations
 
-	Additionally, vowel-space is continuous but consonant-space is *discrete*. You can not move smoothly between consonants. 
+1. Place of Articulation is relevant for sorting similarity between consonants that share a Manner of Articulation, not across Manners.
+2. Place Of Articulation can be arranged into a linear dimension. That is, the eight "places" of consonants in the CMU dict can each be assigned a number 1-8, with roughly equal pronunciation distances between each number.[^6]
+3. Within a group of consonants that share a Manner of Articulation, the difference between a voiced and unvoiced consonant with the same Place of Articulation is approximate the same as the difference between two consonants whose Place of Articulation is .
+
+[^6]: The one exception here is /W/ which is really a weird gliding semi-vowel.
+
+Using these observations, I wrote a function for calculating consonant distance. 
 
 ## Step Three: Distance
 
-Next we want to find the distance between two entire words. First we convert them to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet), using the CMU Pronouncing Dictionary. This gives us two strings of phonemes that we want to find the distance between.
+Now we want to find the distance between two entire words. First we convert them to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet), using the CMU Pronouncing Dictionary. This gives us two strings of phonemes that we want to find the distance between.
 
-My first thought was to use [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) which is “the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other”. But I wanted to be able to match up vowels-to-vowels and consonants-to-consonants, and, at first glance, Levenshtein distance didn’t seem to offer a means to do this.
+My first thought was to use [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) which is "the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other". But I wanted to be able to match up vowels-to-vowels and consonants-to-consonants, and, at first glance, Levenshtein distance didn't seem to offer a means to do this.
 
 So I went searching. Who has spent a lot of time thinking about ways of calculating distance between strings? Answer: biologists.
 
 ### Bioinformatics
 
-Biologists want to be able to ask: given two sequences of amino acids or nucleotides, what is the way of aligning them the
+Biologists want to be able to align strings. In their case these strings are amino acid or nucleotide sequences. But the idea is roughly the same. [To Be Continued.]

@@ -137,6 +137,14 @@ header{
 		}
 	} */
 
+	.social {
+		display: none;
+		.social-links-list {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+
 	nav {
 		background-color: var(--nav-bg);
 		.site-nav {

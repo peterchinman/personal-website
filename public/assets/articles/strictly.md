@@ -39,26 +39,24 @@ Vowels can be mapped into a 2-D space, where the axes are the first and second f
 
 [^2]: For example, consider the vowel sounds in "bat", "bet", and "bot".
 
-	Using some "reasonable average frequencies of F1 and F2… for a male voice"[^3] we would get Euclidean distances of: 
+	Using some "[reasonable average frequencies of F1 and F2… for a male voice](https://linc2018.wordpress.com/wp-content/uploads/2018/06/a-practical-lntroduction-to-phonetics.pdf#page=168)" we would get Euclidean distances of: 
 
 	```
 	bat -> bet: 191.64
 	bat -> bot: 787.48
 	```
 
-	But the vowels in "bet" and "bot" are each—in, I think, a meaningful sense—"adjacent" to the vowel in "bat": one can move thru vowel space from one to the other without passing thru another vowel. Euclidean distance suggests a difference that I don't think is perceptually relevant.[^4]
+	But the vowels in "bet" and "bot" are each—in, I think, a meaningful sense—"adjacent" to the vowel in "bat": one can move thru vowel space from one to the other without passing thru another vowel. Euclidean distance suggests a difference that I don't think is perceptually relevant.[^3]
 
-[^3]: Source 1: https://linc2018.wordpress.com/wp-content/uploads/2018/06/a-practical-lntroduction-to-phonetics.pdf p. 154. 
-
-[^4]: One reason for the discrepancy in the distances is that they are moving along different axes from "bat"—"bet" along the F1 axis, and "bot" along the F2 axis. We could try to correct for this discrepancy by scaling the axes. But it's not obvious that this give us what we actually wanted—or if it would be an quantitative kludge standing in for a lack of metaphysical foundation. 
+[^3]: One reason for the discrepancy in the distances is that they are moving along different axes from "bat"—"bet" along the F1 axis, and "bot" along the F2 axis. We could try to correct for this discrepancy by scaling the axes. But it's not obvious that this give us what we actually wanted—or if it would be an quantitative kludge standing in for a lack of metaphysical foundation. 
 
 I wanted a system for measuring distance that was based in adjacency. Thus was born the Vowel Hex Graph.
 
 ### Vowel Hex Graph
 
-The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagonal grid, as if that was how they were always meant to be arranged.[^5] It is a perfect abstraction, whose beauty seems to be evidence of its truth. Distance could thus be measured by means of counting the number of tiles borders one would have to cross to get from one vowel to another. Life would be lovely and everything would make perfect sense. Until, that is, one remembered the diphthong problem.
+The vowels used in the CMU Pronouncing Dictionary can be arranged into a hexagonal grid, as if that was how they were always meant to be arranged.[^4] It is a perfect abstraction, whose beauty seems to be evidence of its truth. Distance could thus be measured by means of counting the number of tiles borders one would have to cross to get from one vowel to another. Life would be lovely and everything would make perfect sense. Until, that is, one remembered the diphthong problem.
 
-[^5]: The idea appeared to me in a dream.
+[^4]: The idea appeared to me in a dream.
 
 <pre><code class="small-code">
      ..         .          .         ..           
@@ -127,10 +125,10 @@ These are referred to as 1) place of articulation, 2) manner of articulation, an
 ## Observations
 
 1. Place of Articulation is relevant for sorting similarity between consonants that share a Manner of Articulation, not across Manners.
-2. Place Of Articulation can be arranged into a linear dimension. That is, the eight "places" of consonants in the CMU dict can each be assigned a number 1-8, with roughly equal pronunciation distances between each number.[^6]
+2. Place Of Articulation can be arranged into a linear dimension. That is, the eight "places" of consonants in the CMU dict can each be assigned a number 1-8, with roughly equal pronunciation distances between each number.[^5]
 3. Within a group of consonants that share a Manner of Articulation, the difference between a voiced and unvoiced consonant with the same Place of Articulation is approximate the same as the difference between two consonants whose Place of Articulation is .
 
-[^6]: The one exception here is /W/ which is really a weird gliding semi-vowel.
+[^5]: The one exception here is /W/ which is really a weird gliding semi-vowel.
 
 Using these observations, I wrote a function for calculating consonant distance. 
 
@@ -144,4 +142,6 @@ So I went searching. Who has spent a lot of time thinking about ways of calculat
 
 ### Bioinformatics
 
-Biologists want to be able to align strings. In their case these strings are amino acid or nucleotide sequences. But the idea is roughly the same. [To Be Continued.]
+Biologists want to be able to align strings. In their case these strings are amino acid or nucleotide sequences. But the idea is roughly the same.
+
+[To Be Continued...]

@@ -39,7 +39,7 @@ Vowels can be mapped into a 2-D space, where the axes are the first and second f
 
 [^2]: For example, consider the vowel sounds in "bat", "bet", and "bot".
 
-	Using some "[reasonable average frequencies of F1 and F2… for a male voice](https://linc2018.wordpress.com/wp-content/uploads/2018/06/a-practical-lntroduction-to-phonetics.pdf#page=168)" we would get Euclidean distances of: 
+	Using some [reasonable average frequencies of F1 and F2 for a male voice](https://linc2018.wordpress.com/wp-content/uploads/2018/06/a-practical-lntroduction-to-phonetics.pdf#page=168) we would get Euclidean distances of: 
 
 	```
 	bat -> bet: 191.64
@@ -142,6 +142,7 @@ So I went searching. Who has spent a lot of time thinking about ways of calculat
 
 ### Bioinformatics
 
-Biologists want to be able to align strings. In their case these strings are amino acid or nucleotide sequences. But the idea is roughly the same.
+Biologists want to be able to align strings. In their case these strings are amino acid or nucleotide sequences. But the idea is roughly the same. 
+
 
 [To Be Continued...]
